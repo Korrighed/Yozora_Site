@@ -1,13 +1,104 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yozora Fan site</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-2">
+    <div class="container">
+      <a class="navbar-brand" href="#presentation">Yozora Fan Site</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#presentation">Presentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#twitch">Twitch</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#youtube">YouTube</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#socials">Socials</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid m-5">
+    <!-- Presentation Section (Main Hero Section) -->
+    <section id="presentation" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Multiple text blocks with content in HTML -->
+            <div class="text-blocks-container mb-5">WELCOME TO THE YOZORA FAN SITE</div>
+            <div class="text-blocks-container mb-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+            <div class="text-blocks-container mb-5">From this site you can see her latest videos, vods and be informed
+              once she goes live</div>
+          </div>
+          <div class="col-lg-6">
+            <div id="img-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Twitch Section -->
+    <section id="twitch" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center mb-4">Twitch</h2>
+            <div id="twitch-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center mb-4">YouTube</h2>
+            <div id="youtube-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Socials Section -->
+    <section id="socials" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center mb-4">Social Media</h2>
+            <div id="socials-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

@@ -1,24 +1,33 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './styles/main.scss'
+import { TextBlock } from './components/TextBlock.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Apply the yozora-container class to the presentation section
+const presentationSection = document.querySelector('#presentation .container');
+if (presentationSection) {
+  presentationSection.classList.add('yozora-container');
+}
 
-setupCounter(document.querySelector('#counter'))
+// Apply TextBlock styling to all elements with the class (if needed)
+// Since content is now in HTML, you might only need to apply styling
+const textBlockElements = document.querySelectorAll('.text-blocks-container');
+textBlockElements.forEach(element => {
+  // Apply any additional JavaScript-based styling or effects if needed
+  // For example, if TextBlock adds specific classes or behavior:
+  element.classList.add('text-block'); // Add your TextBlock CSS class
+});
+
+// Smooth scroll navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+

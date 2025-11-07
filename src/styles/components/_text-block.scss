@@ -1,0 +1,114 @@
+@use '../variables' as *;
+
+.text-block {
+  position: relative;
+  margin: 0.3em auto;
+  max-width: 600px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  // Add padding to the container to ensure text stays within strand boundaries
+  padding: 40px 60px; // Adjust these values based on your strand size
+  
+  // 4 lines
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px; // Adjust position to align with padding
+    right: 0px; // Adjust position to align with padding
+    width: $decoration-size;
+    height: $decoration-thickness;
+    background-color: $decoration-color;
+    transform: rotate(-45deg);
+    transform-origin: left top;
+    transition: all 0.3s ease;
+    box-shadow: 15px 35px 0 0 $decoration-color;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0em; // Adjust position to align with padding
+    left: -1.3em; // Adjust position to align with padding
+    width: $decoration-size;
+    height: $decoration-thickness;
+    background-color: $decoration-color;
+    transform: rotate(-45deg) ;
+    transform-origin: right right;
+    transition: all 0.3s ease;
+    box-shadow: 15px 35px 0 0 $decoration-color;
+  }
+  
+  &__content {
+    font-family: $font-family;
+    color: $text-color;
+    line-height: 1.8;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-style: italic;
+    outline: none;
+    
+    // Remove any margin/padding that might push content outside
+    margin: 0;
+    padding: 0;
+    
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+    }
+  }
+  
+
+  
+&:hover {
+  // Desktop hover effect
+  @media (min-width: 769px) {
+    &::before,
+    &::after {
+      width: calc(#{$decoration-size} + 10px); 
+    }
+  }
+  
+  // Mobile hover effect - smaller extension or no extension
+  @media (max-width: 768px) {
+    &::before,
+    &::after {
+      width:$decoration-size; 
+
+    }
+  }
+}
+
+  
+  // Responsivité
+  @media (max-width: 768px) {
+    margin: 30px auto;
+    padding: 30px 40px; // Responsive padding
+    
+    &--small { padding: 20px 30px; }
+    &--medium { padding: 25px 35px; }
+    &--large { padding: 30px 40px; }
+    
+    // Adjust strand positions for mobile
+    &::before {
+      top: 8px;
+      right: 8px;
+      width: calc(#{$decoration-size} - 10px);
+    }
+    
+    &::after {
+      bottom: 8px;
+      left: 8px;
+      width: calc(#{$decoration-size} - 10px);
+    }
+    
+    .text-block__content {
+      font-size: calc(#{$text-size-medium} - 0.2rem);
+      line-height: 1.6;
+    }
+  }
+}
