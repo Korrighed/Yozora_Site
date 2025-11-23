@@ -13,23 +13,25 @@
 
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-2">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#presentation">Yozora Fan Site</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav ">
           <li class="nav-item">
             <a class="nav-link" href="#presentation">Presentation</a>
           </li>
+          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#twitch">Twitch</a>
           </li>
+          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#youtube">YouTube</a>
           </li>
+          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#socials">Socials</a>
           </li>
@@ -38,20 +40,42 @@
     </div>
   </nav>
 
-  <main class="container-fluid m-5">
+
+  <main class="container-fluid">
     <!-- Presentation Section (Main Hero Section) -->
     <section id="presentation" class="d-flex align-items-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <!-- Multiple text blocks with content in HTML -->
-            <div class="text-blocks-container mb-5">WELCOME TO THE YOZORA FAN SITE</div>
-            <div class="text-blocks-container mb-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
-            <div class="text-blocks-container mb-5">From this site you can see her latest videos, vods and be informed
-              once she goes live</div>
+      <!-- Presentation Desk-->
+      <div class="container-fluid d-none d-md-block">
+        <div class="row min-vh-100">
+          <div class="col-lg-7 d-flex flex-row-revers text-center mt-5 ">
+            <div class="w-100 ">
+              <div class="text-blocks-container my-5 py-5">WELCOME TO THE YOZORA FAN SITE</div>
+              <div class="text-blocks-container my-5 py-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+              <div class="text-blocks-container my-5 py-5">From this site you can see her latest videos, vods and be
+                informed
+                once she goes live</div>
+            </div>
           </div>
-          <div class="col-lg-6">
-            <div id="img-container"></div>
+          <div class="col-lg-5">
+            <div class="yozora-full-image-container">
+              <img src="/Yozo_Full.png" alt="Yozora image">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Presentation Mobile-->
+      <div class="container d-lg-none">
+        <div class="row ">
+          <div class="col-12">
+            <!-- Multiple text blocks with content in HTML -->
+            <div class="text-blocks-container mt-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+          </div>
+          <div class="col-12">
+            <div class="text-with-bg-image ">From this site you can see her latest videos, vods and be
+              informed
+              once she goes live
+            </div>
           </div>
         </div>
       </div>

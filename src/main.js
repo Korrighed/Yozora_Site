@@ -1,5 +1,5 @@
 import './styles/main.scss'
-import { TextBlock } from './components/TextBlock.js'
+
 
 // Apply the yozora-container class to the presentation section
 const presentationSection = document.querySelector('#presentation .container');

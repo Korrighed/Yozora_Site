@@ -1,7 +1,24 @@
-// Variables pour Yozora (actuellement actives)
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif; 
+}
+
+body {
+  color: #F5F2F5; 
+}
+
+
 $text-color: #F5F2F5;
 $decoration-color: #FEF2CA;
-$font-family: 'Playfair Display SC', serif;
+$font-family: 'Playfair Display', serif;
 $background-gradient: 
   linear-gradient(130deg, #1E1954, #4237BA), 
   linear-gradient(130deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));

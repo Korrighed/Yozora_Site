@@ -1,11 +1,10 @@
 // Import des variables et mixins avec @use (syntaxe moderne)
-@use '_fonts';
 @use 'variables' as *;
-@use 'mixins' as *;
-@use 'base';
 
 // Import des composants
+@use '_navbar_overrides';
 @use 'components/text-block';
+@use 'components/yozo_body_full';
 
 // Styles généraux pour Yozora - Apply star pattern to entire site
 body {
@@ -69,7 +68,6 @@ body::after {
 
 // Text blocks container - class selector only, font styling only
 .text-blocks-container {
-  font-family: 'Playfair Display', serif;
   color: #F5F2F5;
   font-size: 1.5rem;
   letter-spacing: 1px;

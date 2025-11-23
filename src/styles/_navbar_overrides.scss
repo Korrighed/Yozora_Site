@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+
+$navbar: #644344;
+
+
+.navbar {
+  background-color: #644344 !important;
+  font-family: $font-family;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  height: 3.5rem;
+
+  .navbar-toggler {
+    border-color: rgba($decoration-color, 0.3);
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='%23FEF2CA' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+    }
+  }
+  .nav-deco{
+
+  }
+
+  .nav-link {
+    color: $text-color;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &:hover,
+    &:focus {
+      color: $decoration-color;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $decoration-color;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    &:hover::after,
+    &.active::after {
+      width: 80%;
+    }
+  }
+}
