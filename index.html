@@ -23,15 +23,15 @@
           <li class="nav-item">
             <a class="nav-link" href="#presentation">Presentation</a>
           </li>
-          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
+          <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#twitch">Twitch</a>
           </li>
-          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
+          <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#youtube">YouTube</a>
           </li>
-          <img src="public/Star.svg" alt="Star-Shape" class="nav-deco">
+          <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#socials">Socials</a>
           </li>
@@ -46,9 +46,9 @@
     <section id="presentation" class="d-flex align-items-center">
       <!-- Presentation Desk-->
       <div class="container-fluid d-none d-md-block">
-        <div class="row min-vh-100">
-          <div class="col-lg-7 d-flex flex-row-revers text-center mt-5 ">
-            <div class="w-100 ">
+        <div class="row">
+          <div class="col-lg-6 d-flex flex-row-revers text-center mt-5 g-0">
+            <div class="w-100">
               <div class="text-blocks-container my-5 py-5">WELCOME TO THE YOZORA FAN SITE</div>
               <div class="text-blocks-container my-5 py-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
               <div class="text-blocks-container my-5 py-5">From this site you can see her latest videos, vods and be
@@ -56,7 +56,7 @@
                 once she goes live</div>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-6 g-0">
             <div class="yozora-full-image-container">
               <img src="/Yozo_Full.png" alt="Yozora image">
             </div>
@@ -82,15 +82,51 @@
     </section>
 
     <!-- Twitch Section -->
-    <section id="twitch" class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center mb-4">Twitch</h2>
-            <div id="twitch-content"></div>
+    <section id="twitch">
+      <div class="container text-left my-5 border-top">
+        <h2>Twitch</h2>
+      </div>
+      <div id="twitch-content" class="my-4">
+        <div class="container-fluid d-none d-md-block" class="d-flex align-items-center">
+          <div class="row mt-5">
+            <div class="col-lg-5 d-flex text-center">
+              <div class="w-100">
+                <div class="text-blocks-container">
+                  Yozo is offline here is the last vod
+                </div>
+                <div class="w-100 border h-50 stream-overview" id="stream-container">
+                  Placeholder for last Twitch VOD
+                </div>
+                <div class="w-100 border d-flex h-25 clip-overview mt-5 clip-overview">
+                  <div class="w-25 border h-100 clip-overview">twitch clip 1</div>
+                  <div class="w-25 border h-100 clip-overview">twitch clip 2 </div>
+                  <div class="w-25 border h-100 clip-overview">twitch clip 3</div>
+                  <div class="w-25 border h-100 clip-overview">twitch clip 4</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 d-flex justify-content-center align-items-center g-0">
+              <img id="chibi-dance" class="yozora-chibi" src="/Chibi_Zo.svg" alt="Yozora image">
+            </div>
+            <div class="col-lg-5 d-flex text-center">
+              <div class="w-100">
+                <div class="text-blocks-container" id="ussual-timezone">
+                  Streams are from x to x
+                  for your timzone
+                </div>
+                <div class="w-100 schedule_image">
+                  <img src="/Shedul_9Nov.jpg" alt="Weekly Schedule">
+                </div>
+                <div class="w-100">
+                  <div class="text-blocks-container" id="schedule-timezone">
+                    This week schedule
+                    x hours late for you
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- YouTube Section -->

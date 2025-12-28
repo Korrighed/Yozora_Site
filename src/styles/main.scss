@@ -3,7 +3,8 @@
 
 // Import des composants
 @use '_navbar_overrides';
-@use 'components/text-block';
+@use 'components/schedule_image.scss';
+@use 'components/text_block';
 @use 'components/yozo_body_full';
 
 // Styles généraux pour Yozora - Apply star pattern to entire site

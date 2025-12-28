@@ -1,100 +1,83 @@
 export class TimezoneBlock {
-    // Compteur statique pour IDs uniques
-    static counter = 0;
-
-    constructor(config) {
-        this.title = config.title || 'Informations temporelles';
-        this.className = config.className || '';
-
-        // ID simple pour timezone
-        this.id = config.id || `timezone-${++TimezoneBlock.counter}`;
-
-        // Auto-update toutes les secondes
-        this.startAutoUpdate();
+    constructor(streamTimezone = 'America/New_York') {
+        this.streamTimezone = streamTimezone; // 'America/New_York' (EST) or 'America/Los_Angeles' (PST)
     }
 
-    generateTimezoneContent() {
+    calculateTimeDifference() {
         const now = new Date();
-        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const localTime = now.toLocaleString('fr-FR', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
 
-        return `
-            <div class="timezone-info">
-                <div class="timezone-info__item">
-                    <strong>Fuseau horaire :</strong> ${timeZone}
-                </div>
-                <div class="timezone-info__item">
-                    <strong>Heure locale :</strong> ${localTime}
-                </div>
-                <div class="timezone-info__item">
-                    <strong>UTC :</strong> ${now.toUTCString()}
-                </div>
-            </div>
-        `;
+        // Get stream timezone offset
+        const streamTime = new Date(now.toLocaleString('en-US', { timeZone: this.streamTimezone }));
+        const localTime = new Date(now.toLocaleString('en-US', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }));
+
+        // Calculate difference in hours
+        const diffMs = localTime - streamTime;
+        const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+
+        return diffHours;
     }
 
-    render() {
-        return `
-      <div class="text-block text-block--small ${this.className}" data-id="${this.id}">
-        ${this.title ? `<h3 class="text-block__title">${this.title}</h3>` : ''}
-        <div class="text-block__content">
-          ${this.generateTimezoneContent()}
-        </div>
-      </div>
-    `;
-    }
+    generateScheduleMessage() {
+        const diff = this.calculateTimeDifference();
 
-    mount(selector) {
-        const container = document.querySelector(selector);
-        if (container) {
-            const blockHTML = this.render();
-            container.insertAdjacentHTML('beforeend', blockHTML);
-
-            // Ajouter l'interactivité
-            this.addInteractivity();
+        if (diff === 0) {
+            return "This week schedule<br>Same time as you";
+        } else if (diff > 0) {
+            return `This week schedule<br><strong>${Math.abs(diff)} hours</strong> later for you`;
+        } else {
+            return `This week schedule<br><strong>${Math.abs(diff)} hours</strong> earlier for you`;
         }
-        return this;
     }
 
-    addInteractivity() {
-        const element = document.querySelector(`[data-id="${this.id}"]`);
-        if (!element) return;
+    convertStreamTimeToLocal(streamHour, streamMinute = 0) {
+        // Create a date in the stream timezone
+        const now = new Date();
+        const streamDate = new Date(now.toLocaleString('en-US', { timeZone: this.streamTimezone }));
+        streamDate.setHours(streamHour, streamMinute, 0, 0);
 
-        // Effet au survol
-        element.addEventListener('mouseenter', () => {
-            element.style.transform = 'scale(1.02)';
-            element.style.transition = 'all 0.3s ease';
-        });
+        // Get the timestamp
+        const streamTimestamp = streamDate.getTime();
+        const diff = this.calculateTimeDifference();
 
-        element.addEventListener('mouseleave', () => {
-            element.style.transform = 'scale(1)';
-        });
+        // Add the difference
+        const localDate = new Date(streamTimestamp + (diff * 60 * 60 * 1000));
+
+        return localDate;
     }
 
-    updateContent() {
-        const element = document.querySelector(`[data-id="${this.id}"]`);
+    generateUsualStreamMessage(startHour, endHour, startMinute = 0, endMinute = 0) {
+        const localStart = this.convertStreamTimeToLocal(startHour, startMinute);
+        const localEnd = this.convertStreamTimeToLocal(endHour, endMinute);
+
+        const formatTime = (date) => {
+            let hours = date.getHours();
+            const minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const minutesStr = minutes > 0 ? `:${minutes.toString().padStart(2, '0')}` : '';
+            return `${hours}${minutesStr} ${ampm}`;
+        };
+
+        return `Streams are usually from <strong>${formatTime(localStart)}</strong> to <strong>${formatTime(localEnd)}</strong><br>for your timezone`;
+    }
+
+    updateScheduleContent(selector) {
+        const element = document.querySelector(selector);
         if (element) {
-            const contentDiv = element.querySelector('.text-block__content');
-            contentDiv.innerHTML = this.generateTimezoneContent();
+            è
+            element.innerHTML = this.generateScheduleMessage();
         }
     }
 
-    startAutoUpdate() {
-        // Met à jour toutes les secondes
-        setInterval(() => {
-            this.updateContent();
-        }, 1000);
+    updateUsualStreamContent(selector, startHour, endHour, startMinute = 0, endMinute = 0) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.innerHTML = this.generateUsualStreamMessage(startHour, endHour, startMinute, endMinute);
+        }
     }
 
-    static create(config) {
-        return new TimezoneBlock(config);
+    static create(streamTimezone) {
+        return new TimezoneBlock(streamTimezone);
     }
 }

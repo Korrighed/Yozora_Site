@@ -8,8 +8,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   
-  // Add padding to the container to ensure text stays within strand boundaries
-  padding: 40px 60px; // Adjust these values based on your strand size
+  
+  padding: 33em 60em; 
+  font-size: 1.2em;
   
   // 4 lines
   &::before {
