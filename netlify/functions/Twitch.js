@@ -1,5 +1,5 @@
 // This runs on Netlify's servers, NOT in the browser
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 // Store token in memory (resets every ~15 min when function cold starts)
 let cachedToken = null;
@@ -36,7 +36,7 @@ async function getAccessToken() {
 }
 
 // Main handler
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
     // Enable CORS
     const headers = {
         'Access-Control-Allow-Origin': '*',
@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
 
     try {
         const token = await getAccessToken();
-        const broadcasterLogin = 'yozoravt'; // Your Twitch username
+        const broadcasterLogin = 'yozora'; // Your Twitch username
         const clientId = process.env.TWITCH_CLIENT_ID;
 
         // Get broadcaster info using public endpoint

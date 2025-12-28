@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "netlify dev",
+    "dev:vite": "vite",
     "build": "vite build",
     "build:gh-pages": "vite build --mode gh-pages",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "netlify-cli": "^23.13.0",
     "sass": "^1.93.2",
     "vite": "^6.0.5"
   },

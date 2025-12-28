@@ -65,7 +65,6 @@ export class TimezoneBlock {
     updateScheduleContent(selector) {
         const element = document.querySelector(selector);
         if (element) {
-            è
             element.innerHTML = this.generateScheduleMessage();
         }
     }

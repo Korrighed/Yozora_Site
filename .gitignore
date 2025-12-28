@@ -1,7 +1,13 @@
 .vscode
 dist/
 
+# Environment variables
+.env
+.env.local
 
 # Npm
 package-lock.json
-node_modules
+node_modules/
+
+# Netlify
+.netlify/
