@@ -139,4 +139,4 @@ class TwitchIntegration {
     }
 }
 
-export default TwitchIntegration;
+export { TwitchIntegration };
