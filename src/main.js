@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import { TimezoneBlock } from './components/TimezoneBlock.js'
 import { ImageAnimation } from './components/Animation.js'
-import { TwitchIntegration } from './twitch-integration.js';
+import { TwitchIntegration } from './components/TwitchIntegration.js';
 
 // --------------- Style management
 // Apply the yozora-container class to the presentation section
