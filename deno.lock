@@ -13,7 +13,6 @@
       "dependencies": [
         "npm:netlify-cli@^23.13.0",
         "npm:node-fetch@^3.3.2",
-        "npm:sass@^1.93.2",
         "npm:vite@^6.0.5"
       ]
     }

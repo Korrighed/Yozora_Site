@@ -13,12 +13,20 @@
     object-fit: cover;
     object-position: center top;
   }
+}
 
-  @media (max-width: 991px) {
+@media (max-width: 991px) {
+  .yozora-full-image-container {
     height: 70vh;
   }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .yozora-full-image-container {
     max-height: 50vh;
+  }
+
+  .yozora-full-image-container img {
+    object-position: 50% 0%; /* tweak vertical % to frame head */
   }
 }

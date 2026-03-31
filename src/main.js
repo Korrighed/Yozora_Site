@@ -2,6 +2,16 @@ import './styles/main.css'
 import { TimezoneBlock } from './components/TimezoneBlock.js'
 import { ImageAnimation } from './components/Animation.js'
 import { TwitchIntegration } from './components/TwitchIntegration.js'
+import { MobileMenu } from './components/MobileMenu.js'
+
+// --------------- Mobile menu
+const mobileMenu = new MobileMenu('.navbar-toggler', [
+  { label: 'Presentation', href: '#presentation' },
+  { label: 'Twitch', href: '#twitch' },
+  // { label: 'YouTube', href: '#youtube' },
+  { label: 'Socials', href: '#socials' },
+])
+mobileMenu.init()
 
 // --------------- Style management
 // Apply the yozora-container class to the presentation section

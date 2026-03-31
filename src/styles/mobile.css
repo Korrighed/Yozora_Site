@@ -1,0 +1,14 @@
+/* ============================================
+   RESPONSIVE - Global overrides only
+   Component-specific responsive rules live in their own files.
+
+   Breakpoints (CSS vars can't be used in @media — keep in sync):
+     --bp-tablet : 991px
+     --bp-mobile : 768px
+   ============================================ */
+
+@media (max-width: 768px) {
+  .yozora-title {
+    font-size: 2rem;
+  }
+}

@@ -30,7 +30,7 @@
       bottom: 0;
       left: 50%;
       width: 0;
-      height: 2px;
+      height: var(--decoration-thickness);
       background-color: var(--decoration-color);
       transition: all 0.3s ease;
       transform: translateX(-50%);
