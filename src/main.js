@@ -1,4 +1,4 @@
-import './styles/main.scss'
+import './styles/main.css'
 import { TimezoneBlock } from './components/TimezoneBlock.js'
 import { ImageAnimation } from './components/Animation.js'
 import { TwitchIntegration } from './components/TwitchIntegration.js'

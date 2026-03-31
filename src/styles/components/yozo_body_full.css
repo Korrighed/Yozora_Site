@@ -1,4 +1,3 @@
-
 .yozora-full-image-container {
   position: relative;
   width: 100%;
@@ -7,24 +6,19 @@
   display: flex;
   align-items: flex-start;
   justify-content: left;
-  
-  img {
+
+  & img {
     width: 100%;
     height: 78em;
     object-fit: cover;
     object-position: center top;
   }
-  
-  // For tablet screens, adjust height
+
   @media (max-width: 991px) {
     height: 70vh;
   }
 
-    // For mobile screens
   @media (max-width: 768px) {
     max-height: 50vh;
   }
 }
-
-
-

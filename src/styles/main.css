@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import './navbar_overrides.css';
+@import './components/schedule_image.css';
+@import './components/text_block.css';
+@import './components/yozo_body_full.css';
+
+:root {
+  --text-color: #F5F2F5;
+  --decoration-color: #FEF2CA;
+  --font-family: 'Playfair Display', serif;
+  --text-size-small: 1rem;
+  --text-size-medium: 1.3rem;
+  --text-size-large: 1.6rem;
+  --padding-small: 30px 50px;
+  --padding-medium: 50px 80px;
+  --padding-large: 70px 100px;
+  --decoration-size: 35px;
+  --decoration-thickness: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+body {
+  color: var(--text-color);
+  background: linear-gradient(130deg, #1E1954, #4237BA);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/StarPatern.svg');
+  background-repeat: repeat;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.yozora-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+#presentation {
+  position: relative;
+
+  & .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.yozora-title {
+  font-family: 'Playfair Display SC', serif;
+  color: var(--text-color);
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.text-blocks-container {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  padding: 0.8rem;
+}
+
+main section {
+  position: relative;
+  z-index: 1;
+}

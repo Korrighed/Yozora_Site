@@ -1,5 +1,3 @@
-@use '../variables' as *;
-
 .text-block {
   position: relative;
   margin: 0.3em auto;
@@ -7,43 +5,40 @@
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  
-  
-  padding: 33em 60em; 
+  padding: 33em 60em;
   font-size: 1.2em;
-  
-  // 4 lines
+
   &::before {
     content: '';
     position: absolute;
-    top: 0px; // Adjust position to align with padding
-    right: 0px; // Adjust position to align with padding
-    width: $decoration-size;
-    height: $decoration-thickness;
-    background-color: $decoration-color;
+    top: 0px;
+    right: 0px;
+    width: var(--decoration-size);
+    height: var(--decoration-thickness);
+    background-color: var(--decoration-color);
     transform: rotate(-45deg);
     transform-origin: left top;
     transition: all 0.3s ease;
-    box-shadow: 15px 35px 0 0 $decoration-color;
+    box-shadow: 15px 35px 0 0 var(--decoration-color);
   }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 0em; // Adjust position to align with padding
-    left: -1.3em; // Adjust position to align with padding
-    width: $decoration-size;
-    height: $decoration-thickness;
-    background-color: $decoration-color;
-    transform: rotate(-45deg) ;
+    bottom: 0em;
+    left: -1.3em;
+    width: var(--decoration-size);
+    height: var(--decoration-thickness);
+    background-color: var(--decoration-color);
+    transform: rotate(-45deg);
     transform-origin: right right;
     transition: all 0.3s ease;
-    box-shadow: 15px 35px 0 0 $decoration-color;
+    box-shadow: 15px 35px 0 0 var(--decoration-color);
   }
-  
+
   &__content {
-    font-family: $font-family;
-    color: $text-color;
+    font-family: var(--font-family);
+    color: var(--text-color);
     line-height: 1.8;
     text-align: center;
     position: relative;
@@ -52,68 +47,57 @@
     letter-spacing: 0.5px;
     font-style: italic;
     outline: none;
-    
-    // Remove any margin/padding that might push content outside
     margin: 0;
     padding: 0;
-    
+
     &:focus {
       background-color: rgba(255, 255, 255, 0.05);
       border-radius: 5px;
     }
   }
-  
 
-  
-&:hover {
-  // Desktop hover effect
-  @media (min-width: 769px) {
-    &::before,
-    &::after {
-      width: calc(#{$decoration-size} + 10px); 
+  &:hover {
+    @media (min-width: 769px) {
+      &::before,
+      &::after {
+        width: calc(var(--decoration-size) + 10px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      &::before,
+      &::after {
+        width: var(--decoration-size);
+      }
     }
   }
-  
-  // Mobile hover effect - smaller extension or no extension
-  @media (max-width: 768px) {
-    &::before,
-    &::after {
-      width:$decoration-size; 
 
-    }
-  }
-}
-
-  
-  // Responsivité
   @media (max-width: 768px) {
     margin: 30px auto;
-    padding: 30px 40px; // Responsive padding
-    
+    padding: 30px 40px;
+
     &--small { padding: 20px 30px; }
     &--medium { padding: 25px 35px; }
     &--large { padding: 30px 40px; }
-    
-    // Adjust strand positions for mobile
+
     &::before {
       top: 8px;
       right: 8px;
-      width: calc(#{$decoration-size} - 10px);
+      width: calc(var(--decoration-size) - 10px);
     }
-    
+
     &::after {
       bottom: 8px;
       left: 8px;
-      width: calc(#{$decoration-size} - 10px);
+      width: calc(var(--decoration-size) - 10px);
     }
-    
-    .text-block__content {
-      font-size: calc(#{$text-size-medium} - 0.2rem);
+
+    & .text-block__content {
+      font-size: calc(var(--text-size-medium) - 0.2rem);
       line-height: 1.6;
     }
   }
 }
-
 
 .text-with-bg-image {
   background-image: url('/Yozo_Full.png');
@@ -126,8 +110,7 @@
   justify-content: center;
   padding: 2rem;
   position: relative;
-  
-  // Gradient overlay - darker at bottom where text sits
+
   &::before {
     content: '';
     position: absolute;
@@ -137,8 +120,8 @@
     bottom: 0;
     z-index: 0;
   }
-  
-  .text-content {
+
+  & .text-content {
     position: relative;
     z-index: 1;
     color: #000000;
