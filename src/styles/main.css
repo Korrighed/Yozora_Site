@@ -4,6 +4,7 @@
 @import './components/text_block.css';
 @import './components/yozo_body_full.css';
 @import './components/mobile_menu.css';
+@import './components/twitch_section.css';
 @import './mobile.css';
 
 :root {

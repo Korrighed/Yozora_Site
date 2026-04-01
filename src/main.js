@@ -41,15 +41,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   })
 })
 
-// Chibi image animation
-ImageAnimation.create(
-  '#chibi-dance',
-  ['/Chibi_Zo_Left.svg', '/Chibi_Zo_Right.svg'],
-  1500
-);
-
-
-
 
 // --------------- Timezone management
 // Initialize timezone calculator
@@ -65,13 +56,11 @@ timezoneCalc.updateUsualStreamContent('#ussual-timezone', 19, 23) // 19 = 7pm, 2
 
 
 
-// Initialize Twitch integration when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  const twitch = new TwitchIntegration('stream-container', 'clips-container');
-  twitch.init();
+// Initialize Twitch integration
+const twitch = new TwitchIntegration('stream-container', 'clips-container');
+twitch.init();
 
-  // Request notification permission
-  if ('Notification' in window && Notification.permission === 'default') {
-    Notification.requestPermission();
-  }
-});
+// Request notification permission
+if ('Notification' in window && Notification.permission === 'default') {
+  Notification.requestPermission();
+}

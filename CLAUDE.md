@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Fan site for Yozora, a VTuber Raccoon Dog from New Zealand. Live at https://yozovtfan.netlify.app — Twitch: https://www.twitch.tv/yozora
 
-**Stack:** Vanilla JavaScript (ESM), SCSS, Bootstrap 5, Vite, Netlify Functions
+**Stack:** Vanilla JavaScript (ESM), CSS, Bootstrap 5, Vite, Netlify Functions
 
 ## Commands
 
@@ -26,7 +26,7 @@ Always use `npm run dev` (not `dev:vite`) when working on anything that touches 
 
 **Frontend → Netlify Function → Twitch Helix API.** Twitch credentials are kept server-side in `netlify/functions/Twitch.js`. The browser fetches from `/.netlify/functions/Twitch` (proxied from `/api/*` via `netlify.toml`).
 
-`src/main.js` is the entry point. It imports SCSS and initializes components in order: `TimezoneBlock` → `ImageAnimation` → `TwitchIntegration`. All components use named exports.
+`src/main.js` is the entry point. It imports CSS and initializes components in order: `TimezoneBlock` → `ImageAnimation` → `TwitchIntegration`. All components use named exports.
 
 ## Key Constraints
 
@@ -53,9 +53,8 @@ Get credentials at https://dev.twitch.tv/console/apps (App type: Confidential). 
 
 ## Styling
 
-SCSS compiled by Vite. Key files:
-- `src/styles/_variables.scss` — colors, fonts, spacing (purple gradient theme: `#1E1954` → `#4237BA`, font: Playfair Display)
-- `src/styles/main.scss` — global styles, star pattern background
+Plain CSS (SCSS was removed). Key files:
+- `src/styles/main.css` — global styles, star pattern background, CSS variables (purple gradient theme: `#1E1954` → `#4237BA`, font: Playfair Display)
 - `src/styles/components/` — per-component stylesheets
 
 ## Deployment

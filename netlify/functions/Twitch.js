@@ -91,8 +91,8 @@ export const handler = async (event, context) => {
                 }
             }),
 
-            // Get top clips - PUBLIC endpoint
-            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=5&started_at=${getLastWeekDate()}`, {
+            // Get recent clips — fetch max allowed, sort by date
+            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=100`, {
                 headers: {
                     'Client-ID': clientId,
                     'Authorization': `Bearer ${token}`
@@ -106,12 +106,16 @@ export const handler = async (event, context) => {
             clipsRes.json()
         ]);
 
+        const recentClips = (clipsData.data || [])
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+            .slice(0, 5);
+
         // Format response
         const response = {
             isLive: streamData.data && streamData.data.length > 0,
             stream: streamData.data[0] || null,
             videos: videosData.data || [],
-            clips: clipsData.data || [],
+            clips: recentClips,
             broadcaster: userData.data[0]
         };
 
@@ -135,9 +139,3 @@ export const handler = async (event, context) => {
     }
 };
 
-// Helper function to get date from 7 days ago (for clips)
-function getLastWeekDate() {
-    const date = new Date();
-    date.setDate(date.getDate() - 7);
-    return date.toISOString();
-}

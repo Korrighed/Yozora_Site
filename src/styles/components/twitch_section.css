@@ -1,0 +1,324 @@
+/* ============================================
+   TWITCH SECTION
+   ============================================ */
+
+/* --- Status Banner --- */
+.twitch-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-family);
+}
+
+.twitch-banner__status-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #888;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.twitch-banner__status-dot--live {
+  background-color: #e74c3c;
+  box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6);
+  animation: live-pulse 1.5s infinite;
+}
+
+@keyframes live-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6); }
+  70%  { box-shadow: 0 0 0 0.5rem rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.twitch-banner__marquee-track {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.twitch-banner__marquee {
+  display: inline-flex;
+  gap: 2rem;
+  white-space: nowrap;
+  animation: banner-scroll 18s linear infinite;
+}
+
+@keyframes banner-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.twitch-banner__label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.twitch-banner__detail {
+  font-size: 0.95rem;
+  color: rgba(245, 242, 245, 0.7);
+  font-style: italic;
+}
+
+.twitch-banner__link {
+  margin-left: auto;
+  color: var(--decoration-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid var(--decoration-color);
+  border-radius: 0.375rem;
+  padding: 0.3rem 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &::before {
+    content: attr(data-label);
+  }
+
+  & img {
+    width: 0.75em;
+    height: 0.75em;
+    filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
+    transition: filter 0.2s ease;
+  }
+
+  &:hover {
+    background: var(--decoration-color);
+    color: #1E1954;
+
+    & img {
+      filter: invert(0) brightness(0);
+    }
+  }
+}
+
+/* --- Shared block title --- */
+.twitch-section__title {
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- VOD Block --- */
+.twitch-vod-wrapper {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.twitch-vod-label {
+  /* uses .twitch-section__title */
+}
+
+.twitch-vod-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #0e0e10;
+
+  & iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.twitch-offline-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(245, 242, 245, 0.5);
+  font-style: italic;
+}
+
+/* --- Info Cards (schedule + clips) --- */
+.twitch-info-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+/* --- Clips Carousel --- */
+.twitch-clips-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.twitch-clips-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  & .twitch-section__title {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+.twitch-clips-card__title {
+  /* uses .twitch-section__title */
+}
+
+/* Wrapper that holds chibi + frame + nav as one visual unit */
+.twitch-clip-embed-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.twitch-clips-more {
+  font-size: 1.425rem;
+  color: var(--decoration-color);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  & img {
+    width: 0.75em;
+    height: 0.75em;
+    filter: invert(1);
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.twitch-clip-frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #0e0e10;
+
+  & iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.twitch-clip-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+}
+
+.twitch-clip-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-height: 1.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.twitch-clip-meta__title {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* view count — hidden for now, can be toggled back on
+.twitch-clip-meta__views {
+  font-size: 0.8rem;
+  color: rgba(245, 242, 245, 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+} */
+
+.twitch-clip-nav__btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.4rem;
+  width: 3.5rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.75rem;
+
+  & img {
+    width: 1.2rem;
+    height: 1.2rem;
+    filter: invert(1);
+    transition: filter 0.2s ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    & img {
+      filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
+    }
+  }
+}
+
+.twitch-clip-nav__counter {
+  font-size: 1.7rem;
+  color: rgba(245, 242, 245, 0.6);
+  min-width: 3rem;
+  text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .twitch-banner__detail {
+    white-space: normal;
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .twitch-banner {
+    gap: 0.5rem;
+  }
+
+  .twitch-banner__link {
+    margin-left: 0;
+  }
+}

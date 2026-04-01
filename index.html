@@ -83,53 +83,80 @@
 
     <!-- Twitch Section -->
     <section id="twitch">
-      <div class="container text-left my-5 border-top">
+      <div class="container border-top pt-4 mt-5">
         <h2>Twitch</h2>
       </div>
-      <div id="twitch-content" class="my-4">
-        <div class="container-fluid d-none d-md-block" class="d-flex align-items-center">
-          <div class="row mt-5">
-            <div class="col-lg-5 d-flex text-center">
-              <div class="w-100">
-                <div class="text-blocks-container">
-                  Yozo is offline here is the last vod
-                </div>
-                <div class="w-100 border h-50 stream-overview" id="stream-container">
-                  Placeholder for last Twitch VOD
-                </div>
-                <div class="w-100 border d-flex h-25 clip-overview mt-5" id="clips-container">
-                  <div class="w-25 border h-100 clip-overview">twitch clip 1</div>
-                  <div class="w-25 border h-100 clip-overview">twitch clip 2 </div>
-                  <div class="w-25 border h-100 clip-overview">twitch clip 3</div>
-                  <div class="w-25 border h-100 clip-overview">twitch clip 4</div>
-                </div>
+
+      <!-- Status Banner -->
+      <div class="container mt-4">
+        <div id="twitch-status-banner" class="twitch-banner">
+          <span class="twitch-banner__status-dot"></span>
+          <div class="twitch-banner__marquee-track">
+            <div class="twitch-banner__marquee">
+              <span id="twitch-banner-label" class="twitch-banner__label">Loading...</span>
+              <span id="twitch-banner-detail" class="twitch-banner__detail"></span>
+            </div>
+          </div>
+          <a id="twitch-banner-link" class="twitch-banner__link" href="https://www.twitch.tv/yozora" target="_blank" rel="noopener noreferrer" data-label="Open on Twitch"><img src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
+        </div>
+      </div>
+
+      <!-- Schedule + Clips row -->
+      <div class="container mt-4">
+        <div class="row g-4">
+
+          <!-- Schedule column -->
+          <div class="col-lg-6">
+            <div class="twitch-info-card">
+              <p class="twitch-section__title">Schedule</p>
+              <div class="text-blocks-container" id="ussual-timezone">
+                Streams are from x to x for your timezone
+              </div>
+              <div class="schedule_image mt-3">
+                <img src="/Shedul_9Nov.jpg" alt="Weekly Schedule">
+              </div>
+              <div class="text-blocks-container mt-3" id="schedule-timezone">
+                This week schedule — x hours difference for you
               </div>
             </div>
-            <div class="col-lg-2 d-flex justify-content-center align-items-center g-0">
-              <img id="chibi-dance" class="yozora-chibi" src="/Chibi_Zo_Left.svg" alt="Yozora image">
-            </div>
-            <div class="col-lg-5 d-flex text-center">
-              <div class="w-100">
-                <div class="text-blocks-container" id="ussual-timezone">
-                  Streams are from x to x
-                  for your timzone
+          </div>
+
+          <!-- Clips carousel column -->
+          <div class="col-lg-6">
+            <div class="twitch-info-card twitch-clips-card">
+              <div class="twitch-clips-card__header">
+                <p class="twitch-clips-card__title twitch-section__title">Recent Highlights</p>
+                <a class="twitch-clips-more" href="https://www.twitch.tv/yozora/videos?filter=clips&range=30d" target="_blank" rel="noopener noreferrer">More clips <img src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
+              </div>
+              <div class="twitch-clip-embed-wrapper">
+                <p id="clip-title" class="twitch-clip-meta__title"></p>
+                <div class="twitch-clip-frame" id="clips-container">
+                  <!-- Clip embed injected by TwitchIntegration.js -->
                 </div>
-                <div class="w-100 schedule_image">
-                  <img src="/Shedul_9Nov.jpg" alt="Weekly Schedule">
-                </div>
-                <div class="w-100">
-                  <div class="text-blocks-container" id="schedule-timezone">
-                    This week schedule
-                    x hours late for you
-                  </div>
+                <div class="twitch-clip-nav">
+                  <button id="clip-prev" class="twitch-clip-nav__btn" aria-label="Previous clip"><img src="/icon/arrow-left-solid-full.svg" alt="Previous"></button>
+                  <span id="clip-counter" class="twitch-clip-nav__counter">1 / 5</span>
+                  <button id="clip-next" class="twitch-clip-nav__btn" aria-label="Next clip"><img src="/icon/arrow-right-solid-full.svg" alt="Next"></button>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+      </div>
+
+      <!-- VOD Embed — full width, below schedule & clips -->
+      <div class="container mt-5">
+        <div class="twitch-vod-wrapper">
+          <p class="twitch-vod-label twitch-section__title" id="vod-label">Latest VOD</p>
+          <div class="twitch-vod-frame" id="stream-container">
+            <!-- Embed injected by TwitchIntegration.js -->
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- YouTube Section -->
+    <!-- YouTube Section — hidden for now, planned for later
     <section id="youtube" class="py-5">
       <div class="container">
         <div class="row">
@@ -140,6 +167,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- Socials Section -->
     <section id="socials" class="py-5">
