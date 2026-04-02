@@ -44,31 +44,26 @@ class TwitchIntegration {
   }
 
   updateBanner(data) {
-    const dot = document.querySelector('.twitch-banner__status-dot');
-    const marquee = document.querySelector('.twitch-banner__marquee');
+    const banner = document.getElementById('twitch-status-banner');
+    const label = document.getElementById('twitch-banner-label');
+    const detail = document.getElementById('twitch-banner-detail');
     const bannerLink = document.getElementById('twitch-banner-link');
 
-    let labelText, detailText, linkText;
-
     if (data.isLive) {
-      dot?.classList.add('twitch-banner__status-dot--live');
-      labelText = 'Currently Live';
-      detailText = `${data.stream.title} · ${data.stream.viewer_count.toLocaleString()} viewers`;
-      linkText = 'Watch on Twitch';
+      banner?.classList.add('twitch-banner--live');
+      banner?.classList.remove('twitch-banner--offline');
+      label.textContent = 'Currently Live';
+      detail.textContent = `${data.stream.title} · ${data.stream.viewer_count.toLocaleString()} viewers`;
+      bannerLink.dataset.label = 'Watch on Twitch';
     } else {
-      dot?.classList.remove('twitch-banner__status-dot--live');
-      labelText = 'Offline';
-      detailText = data.videos.length > 0
+      banner?.classList.add('twitch-banner--offline');
+      banner?.classList.remove('twitch-banner--live');
+      label.textContent = 'Offline';
+      detail.textContent = data.videos.length > 0
         ? `Last stream: ${data.videos[0].title}`
         : 'No recent streams';
-      linkText = 'Visit Twitch Channel';
+      bannerLink.dataset.label = 'Watch the last VOD';
     }
-
-    // Duplicate content for seamless loop
-    const segment = `<span class="twitch-banner__label">${labelText}</span><span class="twitch-banner__detail">${detailText}</span>`;
-    marquee.innerHTML = segment + segment;
-
-    bannerLink.dataset.label = linkText;
   }
 
   setVodLabel(text) {

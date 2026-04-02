@@ -10,10 +10,43 @@
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   padding: 1rem 1.5rem;
   font-family: var(--font-family);
+  position: relative;
+}
+
+/* Offline: animated gradient border */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-spin {
+  to { --border-angle: 360deg; }
+}
+
+.twitch-banner--offline::before,
+.twitch-banner--live::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  animation: border-spin 3s linear infinite;
+  /* mask: only show the 1px border ring, hide the interior */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.twitch-banner--offline::before {
+  background: conic-gradient(from var(--border-angle), transparent 60%, #888 80%, transparent 100%);
+}
+
+.twitch-banner--live::before {
+  background: conic-gradient(from var(--border-angle), transparent 60%, #e74c3c 80%, transparent 100%);
 }
 
 .twitch-banner__status-dot {
@@ -22,12 +55,10 @@
   border-radius: 50%;
   background-color: #888;
   flex-shrink: 0;
-  transition: background-color 0.3s ease;
 }
 
-.twitch-banner__status-dot--live {
+.twitch-banner--live .twitch-banner__status-dot {
   background-color: #e74c3c;
-  box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6);
   animation: live-pulse 1.5s infinite;
 }
 
@@ -37,34 +68,24 @@
   100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
 }
 
-.twitch-banner__marquee-track {
-  flex: 1;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.twitch-banner__marquee {
-  display: inline-flex;
-  gap: 2rem;
-  white-space: nowrap;
-  animation: banner-scroll 18s linear infinite;
-}
-
-@keyframes banner-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .twitch-banner__label {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-color);
 }
 
+.twitch-banner__spacer {
+  flex: 1;
+}
+
 .twitch-banner__detail {
-  font-size: 0.95rem;
-  color: rgba(245, 242, 245, 0.7);
+  font-size: 1.15rem;
+  color: var(--text-color);
   font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .twitch-banner__link {

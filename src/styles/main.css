@@ -90,3 +90,8 @@ main {
     z-index: 1;
   }
 }
+
+#presentation {
+  padding-top: 3.5rem; /* clear fixed navbar */
+  overflow: hidden;
+}

@@ -45,9 +45,8 @@ export class TimezoneBlock {
         return localDate;
     }
 
-    generateUsualStreamMessage(startHour, endHour, startMinute = 0, endMinute = 0) {
+    generateUsualStreamMessage(startHour, startMinute = 0) {
         const localStart = this.convertStreamTimeToLocal(startHour, startMinute);
-        const localEnd = this.convertStreamTimeToLocal(endHour, endMinute);
 
         const formatTime = (date) => {
             let hours = date.getHours();
@@ -59,7 +58,7 @@ export class TimezoneBlock {
             return `${hours}${minutesStr} ${ampm}`;
         };
 
-        return `Streams are usually from <strong>${formatTime(localStart)}</strong> to <strong>${formatTime(localEnd)}</strong><br>for your timezone`;
+        return `Streams usually start at <strong>${formatTime(localStart)}</strong> for your timezone`;
     }
 
     updateScheduleContent(selector) {
@@ -69,10 +68,10 @@ export class TimezoneBlock {
         }
     }
 
-    updateUsualStreamContent(selector, startHour, endHour, startMinute = 0, endMinute = 0) {
+    updateUsualStreamContent(selector, startHour, startMinute = 0) {
         const element = document.querySelector(selector);
         if (element) {
-            element.innerHTML = this.generateUsualStreamMessage(startHour, endHour, startMinute, endMinute);
+            element.innerHTML = this.generateUsualStreamMessage(startHour, startMinute);
         }
     }
 

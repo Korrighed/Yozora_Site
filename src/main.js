@@ -44,13 +44,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // --------------- Timezone management
 // Initialize timezone calculator
-const timezoneCalc = TimezoneBlock.create('America/New_York') // Or 'America/Los_Angeles' for PST
+const timezoneCalc = TimezoneBlock.create('Pacific/Auckland') // NZT
+const scheduleCalc = TimezoneBlock.create('America/Los_Angeles') // PST — schedule image is in PST
 
-// Update the schedule timezone message
-timezoneCalc.updateScheduleContent('#schedule-timezone')
+// Schedule diff: PST vs browser
+scheduleCalc.updateScheduleContent('#schedule-timezone')
 
-// Update the usual stream times (example: streams from 7pm to 11pm EST)
-timezoneCalc.updateUsualStreamContent('#ussual-timezone', 19, 23) // 19 = 7pm, 23 = 11pm
+// Usual stream start: NZT vs browser
+timezoneCalc.updateUsualStreamContent('#ussual-timezone', 13)
 
 
 

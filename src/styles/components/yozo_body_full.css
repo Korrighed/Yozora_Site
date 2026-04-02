@@ -1,32 +1,42 @@
+.presentation-text-col {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  min-height: 5rem;
+  /* tweak height */
+}
+
+.col-lg-6.g-0:has(.yozora-full-image-container) {
+  max-height: 80vh;
+  overflow: visible;
+}
+
 .yozora-full-image-container {
-  position: relative;
   width: 100%;
-  max-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: left;
+  overflow: visible;
+  position: relative;
 
   & img {
-    width: 100%;
-    height: 78em;
-    object-fit: cover;
-    object-position: center top;
+    height: 170vh;
+    width: auto;
+    display: block;
+    position: relative;
+    bottom: 70px;
+    right: 160px;
   }
 }
 
-@media (max-width: 991px) {
-  .yozora-full-image-container {
-    height: 70vh;
-  }
+.presentation-text-blocks {
+  margin-top: -4rem; /* tweak vertical position */
 }
 
-@media (max-width: 768px) {
-  .yozora-full-image-container {
-    max-height: 50vh;
-  }
-
-  .yozora-full-image-container img {
-    object-position: 50% 0%; /* tweak vertical % to frame head */
-  }
+.presentation-mobile-image {
+  max-height: 60vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }

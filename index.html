@@ -43,39 +43,37 @@
 
   <main class="container-fluid">
     <!-- Presentation Section (Main Hero Section) -->
-    <section id="presentation" class="d-flex align-items-center">
+    <section id="presentation">
       <!-- Presentation Desk-->
-      <div class="container-fluid d-none d-md-block">
-        <div class="row">
-          <div class="col-lg-6 d-flex flex-row-revers text-center mt-5 g-0">
-            <div class="w-100">
-              <div class="text-blocks-container my-5 py-5">WELCOME TO THE YOZORA FAN SITE</div>
-              <div class="text-blocks-container my-5 py-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
-              <div class="text-blocks-container my-5 py-5">From this site you can see her latest videos, vods and be
-                informed
-                once she goes live</div>
-            </div>
+      <div class="container d-none d-md-block">
+        <div class="row mb-4">
+          <div class="col-12 text-center">
+            <div class="presentation-text-col text-blocks-container">WELCOME TO THE YOZORA FAN SITE</div>
           </div>
+        </div>
+        <div class="row align-items-center">
           <div class="col-lg-6 g-0">
             <div class="yozora-full-image-container">
               <img src="/Yozo_Full.png" alt="Yozora image">
             </div>
+          </div>
+          <div class="col-lg-6 d-flex flex-column gap-4 text-center px-4 presentation-text-blocks">
+            <div class="presentation-text-col text-blocks-container">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+            <div class="presentation-text-col text-blocks-container">From this site you can see her latest videos, vods and be
+              informed once she goes live</div>
           </div>
         </div>
       </div>
 
       <!-- Presentation Mobile-->
       <div class="container d-lg-none">
-        <div class="row ">
-          <div class="col-12">
-            <!-- Multiple text blocks with content in HTML -->
-            <div class="text-blocks-container mt-5">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+        <div class="row g-3 mt-4">
+          <div class="col-12 text-center">
+            <img src="/Yozo_Full.png" alt="Yozora" class="presentation-mobile-image">
           </div>
-          <div class="col-12">
-            <div class="text-with-bg-image ">From this site you can see her latest videos, vods and be
-              informed
-              once she goes live
-            </div>
+          <div class="col-12 d-flex flex-column gap-3 text-center">
+            <div class="presentation-text-col text-blocks-container">Yozora is a Racoon Dog Vtuber from New Zealand</div>
+            <div class="presentation-text-col text-blocks-container">From this site you can see her latest videos, vods and be informed once she goes live</div>
           </div>
         </div>
       </div>
@@ -89,14 +87,11 @@
 
       <!-- Status Banner -->
       <div class="container mt-4">
-        <div id="twitch-status-banner" class="twitch-banner">
+        <div id="twitch-status-banner" class="twitch-banner twitch-banner--offline">
           <span class="twitch-banner__status-dot"></span>
-          <div class="twitch-banner__marquee-track">
-            <div class="twitch-banner__marquee">
-              <span id="twitch-banner-label" class="twitch-banner__label">Loading...</span>
-              <span id="twitch-banner-detail" class="twitch-banner__detail"></span>
-            </div>
-          </div>
+          <span id="twitch-banner-label" class="twitch-banner__label">Loading...</span>
+          <span class="twitch-banner__spacer"></span>
+          <span id="twitch-banner-detail" class="twitch-banner__detail"></span>
           <a id="twitch-banner-link" class="twitch-banner__link" href="https://www.twitch.tv/yozora" target="_blank" rel="noopener noreferrer" data-label="Open on Twitch"><img src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
         </div>
       </div>
@@ -109,13 +104,13 @@
           <div class="col-lg-6">
             <div class="twitch-info-card">
               <p class="twitch-section__title">Schedule</p>
-              <div class="text-blocks-container" id="ussual-timezone">
+              <div class="text-blocks-container text-center" id="ussual-timezone">
                 Streams are from x to x for your timezone
               </div>
               <div class="schedule_image mt-3">
                 <img src="/Shedul_9Nov.jpg" alt="Weekly Schedule">
               </div>
-              <div class="text-blocks-container mt-3" id="schedule-timezone">
+              <div class="text-blocks-container mt-3 text-center" id="schedule-timezone">
                 This week schedule — x hours difference for you
               </div>
             </div>
