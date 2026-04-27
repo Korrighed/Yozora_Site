@@ -145,7 +145,7 @@ class TwitchIntegration {
   async checkLiveStatus() {
     try {
       const data = await this.fetchTwitchData();
-      const wasLive = document.querySelector('.twitch-banner__status-dot--live') !== null;
+      const wasLive = document.getElementById('twitch-status-banner')?.classList.contains('twitch-banner--live') ?? false;
 
       this.updateBanner(data);
 

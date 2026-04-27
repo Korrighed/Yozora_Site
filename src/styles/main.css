@@ -33,14 +33,13 @@
   box-sizing: border-box;
 }
 
-.container,
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl,
-.container-xxl {
-  --bs-gutter-x: 0.5rem;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 html,
@@ -56,14 +55,74 @@ body {
   position: relative;
 }
 
-/* main.js adds .yozora-container to #presentation .container dynamically */
-.yozora-container {
+/* ── Hero desktop layout ─────────────────────────────────── */
+.hero-desktop {
+  display: none;
   max-width: 75rem;
   margin: 0 auto;
   padding: 2.5rem 1.25rem;
-  text-align: center;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 992px) {
+  .hero-desktop {
+    display: block;
+  }
+}
+
+.hero-title-row {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.hero-content-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+/* ── Section patterns ────────────────────────────────────── */
+.section-title-bar {
+  border-top: 1px solid rgba(254, 242, 202, 0.3);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.section-block,
+.section-block--lg {
+  margin-top: 1.5rem;
+}
+
+.section-block--lg {
+  margin-top: 3rem;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .two-col-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── H1 reset (heading used as styled text block) ────────── */
+h1.text-blocks-container {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.section-heading {
+  font-family: var(--font-family);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
 }
 
 .yozora-title {
@@ -81,7 +140,7 @@ body {
   letter-spacing: 0.0625rem;
   position: relative;
   z-index: 1;
-  padding: 0.8rem;
+  text-align: center;
 }
 
 main {

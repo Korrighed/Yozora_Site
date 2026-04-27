@@ -8,6 +8,10 @@
    ============================================ */
 
 @media (max-width: 991px) {
+  main {
+    margin-inline: 5vw;
+  }
+
   .yozora-title {
     font-size: 2rem;
   }

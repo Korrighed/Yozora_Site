@@ -13,20 +13,6 @@ const mobileMenu = new MobileMenu(null, [
 ])
 mobileMenu.init()
 
-// --------------- Style management
-// Apply the yozora-container class to the presentation section
-const presentationSection = document.querySelector('#presentation .container')
-if (presentationSection) {
-  presentationSection.classList.add('yozora-container')
-}
-
-// Apply TextBlock styling to all elements with the class (if needed)
-const textBlockElements = document.querySelectorAll('.text-blocks-container')
-textBlockElements.forEach(element => {
-
-  element.classList.add('text-block')
-})
-
 // Smooth scroll navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -57,7 +43,3 @@ timezoneCalc.updateScheduleContent('#schedule-timezone')
 const twitch = new TwitchIntegration('stream-container', 'clips-container');
 twitch.init();
 
-// Request notification permission
-if ('Notification' in window && Notification.permission === 'default') {
-  Notification.requestPermission();
-}

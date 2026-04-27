@@ -110,18 +110,17 @@
   & img {
     width: 0.75em;
     height: 0.75em;
-    filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1);
-    transition: filter 0.2s ease;
   }
 
   &:hover {
     background: var(--decoration-color);
     color: #1E1954;
-
-    & img {
-      filter: invert(0) brightness(0);
-    }
   }
+}
+
+/* Schedule timezone label spacing */
+#schedule-timezone {
+  margin-top: 1rem;
 }
 
 /* --- Shared block title --- */
@@ -231,7 +230,6 @@
   & img {
     width: 0.75em;
     height: 0.75em;
-    filter: invert(1);
   }
 
   &:hover {
@@ -321,7 +319,7 @@
 
 .twitch-clip-nav__counter {
   font-size: 1.7rem;
-  color: rgba(245, 242, 245, 0.6);
+  color: var(--text-color);
   min-width: 3rem;
   text-align: center;
 }

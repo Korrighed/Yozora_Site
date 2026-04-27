@@ -1,3 +1,20 @@
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
 @media (max-width: 991px) {
   .navbar {
     display: none !important;
@@ -5,6 +22,8 @@
 }
 
 .navbar {
+  display: flex;
+  align-items: center;
   background: linear-gradient(135deg, #13103a, #1E1954, #2a2470) !important;
   border: 1px solid rgba(254, 242, 202, 0.3);
   border-radius: 0.75rem;

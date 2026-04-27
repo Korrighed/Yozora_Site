@@ -32,9 +32,33 @@
 
   <link rel="icon" type="image/svg+xml" href="/images/Chibi_Zo_Left.svg" />
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Yozora Fan Site",
+        "url": "https://yozovtfan.netlify.app",
+        "description": "Fan site for Yozora Aoi, a Raccoon Dog VTuber from New Zealand."
+      },
+      {
+        "@type": "Person",
+        "name": "Yozora Aoi",
+        "alternateName": "yozora",
+        "description": "Raccoon Dog VTuber from New Zealand",
+        "url": "https://www.twitch.tv/yozora",
+        "sameAs": [
+          "https://www.twitch.tv/yozora",
+          "https://twitter.com/YozoraCh",
+          "https://www.youtube.com/channel/UCTdtNTRxycFnzQtGfPOZYyw",
+          "https://discord.gg/WGBUTEQY6S"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -51,22 +75,18 @@
   </div>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar">
     <div class="container">
-      <div class="navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav ">
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#presentation">Presentation</a>
           </li>
-          <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
+          <img src="/Star.svg" alt="" aria-hidden="true" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#twitch">Twitch</a>
           </li>
-          <!-- <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
-          <li class="nav-item">
-            <a class="nav-link" href="#youtube">YouTube</a>
-          </li> -->
-          <img src="/Star.svg" alt="Star-Shape" class="nav-deco">
+          <img src="/Star.svg" alt="" aria-hidden="true" class="nav-deco">
           <li class="nav-item">
             <a class="nav-link" href="#socials">Socials</a>
           </li>
@@ -75,40 +95,34 @@
     </div>
   </nav>
 
-
-  <main class="container-fluid">
+  <main>
     <!-- Presentation Section (Main Hero Section) -->
     <section id="presentation">
-      <!-- Presentation Desk-->
-      <div class="container d-none d-lg-block">
-        <div class="row mb-4">
-          <div class="col-12 text-center">
-            <div class="presentation-text-col text-blocks-container">WELCOME TO THE YOZORA FAN SITE</div>
-          </div>
+      <!-- Presentation Desktop -->
+      <div class="hero-desktop">
+        <div class="hero-title-row">
+          <h1 class="presentation-text-col text-blocks-container">WELCOME TO THE YOZORA FAN SITE</h1>
         </div>
-        <div class="row align-items-center">
-          <div class="col-lg-6 g-0">
-            <div class="yozora-full-image-container">
-              <img src="/images/Yozo_Full.png" alt="Yozora image">
-            </div>
+        <div class="hero-content-row">
+          <div class="yozora-full-image-container">
+            <img src="/images/Yozo_Full.png" alt="Yozora Aoi illustration">
           </div>
-          <div class="col-lg-6 d-flex flex-column gap-4 text-center px-4 presentation-text-blocks">
+          <div class="presentation-text-blocks">
             <div class="presentation-text-col text-blocks-container">Yozora is a Racoon Dog Vtuber from New Zealand
             </div>
             <div class="presentation-text-col text-blocks-container">From this site you can see her latest videos, vods
-              and be
-              informed once she goes live</div>
+              and be informed once she goes live</div>
           </div>
         </div>
       </div>
 
-      <!-- Presentation Mobile-->
-      <div class="hero-mobile d-lg-none">
+      <!-- Presentation Mobile -->
+      <div class="hero-mobile">
         <div class="hero-mobile__image-block">
-          <img src="/images/Yozo_Full.png" alt="Yozora" class="hero-mobile__image">
+          <img src="/images/Yozo_Full.png" alt="Yozora Aoi illustration" class="hero-mobile__image">
         </div>
         <div class="hero-mobile__content">
-          <p class="hero-mobile__title">WELCOME TO THE<br>YOZORA FAN SITE</p>
+          <h1 class="hero-mobile__title">WELCOME TO THE<br>YOZORA FAN SITE</h1>
           <p class="hero-mobile__text">Racoon Dog VTuber from New Zealand</p>
           <p class="hero-mobile__text">Latest videos, VODs &amp; live alerts</p>
         </div>
@@ -117,12 +131,12 @@
 
     <!-- Twitch Section -->
     <section id="twitch">
-      <div class="container border-top pt-4 mt-5">
-        <h2>Twitch</h2>
+      <div class="container section-title-bar">
+        <h1 class="section-heading">Twitch</h1>
       </div>
 
       <!-- Status Banner -->
-      <div class="container mt-4">
+      <div class="container section-block">
         <div id="twitch-status-banner" class="twitch-banner twitch-banner--offline">
           <span class="twitch-banner__status-dot"></span>
           <span id="twitch-banner-label" class="twitch-banner__label">Loading...</span>
@@ -135,46 +149,42 @@
       </div>
 
       <!-- Schedule + Clips row -->
-      <div class="container mt-4">
-        <div class="row g-4">
+      <div class="container section-block">
+        <div class="two-col-grid">
 
           <!-- Schedule column -->
-          <div class="col-lg-6">
-            <div class="twitch-info-card">
-              <p class="twitch-section__title">Schedule</p>
-              <div class="text-blocks-container text-center" id="ussual-timezone">
-                Streams are from x to x for your timezone
-              </div>
-              <div class="schedule_image mt-3">
-                <img src="/images/Shedul_9Nov.jpg" alt="Weekly Schedule">
-              </div>
-              <div class="text-blocks-container mt-3 text-center" id="schedule-timezone">
-                This week schedule — x hours difference for you
-              </div>
+          <div class="twitch-info-card">
+            <p class="twitch-section__title">Schedule</p>
+            <div class="text-blocks-container" id="ussual-timezone">
+              Streams are from x to x for your timezone
+            </div>
+            <div class="schedule_image">
+              <img src="/images/Shedul_9Nov.jpg" alt="Weekly Schedule">
+            </div>
+            <div class="text-blocks-container" id="schedule-timezone">
+              This week schedule — x hours difference for you
             </div>
           </div>
 
           <!-- Clips carousel column -->
-          <div class="col-lg-6">
-            <div class="twitch-info-card twitch-clips-card">
-              <div class="twitch-clips-card__header">
-                <p class="twitch-clips-card__title twitch-section__title">Recent Highlights</p>
-                <a class="twitch-clips-more" href="https://www.twitch.tv/yozora/videos?filter=clips&range=30d"
-                  target="_blank" rel="noopener noreferrer">More clips <img
-                    src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
+          <div class="twitch-info-card twitch-clips-card">
+            <div class="twitch-clips-card__header">
+              <p class="twitch-clips-card__title twitch-section__title">Recent Highlights</p>
+              <a class="twitch-clips-more" href="https://www.twitch.tv/yozora/videos?filter=clips&range=30d"
+                target="_blank" rel="noopener noreferrer">More clips <img
+                  src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
+            </div>
+            <div class="twitch-clip-embed-wrapper">
+              <p id="clip-title" class="text-blocks-container"></p>
+              <div class="twitch-clip-frame" id="clips-container">
+                <!-- Clip embed injected by TwitchIntegration.js -->
               </div>
-              <div class="twitch-clip-embed-wrapper">
-                <p id="clip-title" class="text-blocks-container"></p>
-                <div class="twitch-clip-frame" id="clips-container">
-                  <!-- Clip embed injected by TwitchIntegration.js -->
-                </div>
-                <div class="twitch-clip-nav">
-                  <button id="clip-prev" class="twitch-clip-nav__btn" aria-label="Previous clip"><img
-                      src="/icon/arrow-left-solid-full.svg" alt="Previous"></button>
-                  <span id="clip-counter" class="twitch-clip-nav__counter">1 / 5</span>
-                  <button id="clip-next" class="twitch-clip-nav__btn" aria-label="Next clip"><img
-                      src="/icon/arrow-right-solid-full.svg" alt="Next"></button>
-                </div>
+              <div class="twitch-clip-nav">
+                <button id="clip-prev" class="twitch-clip-nav__btn" aria-label="Previous clip"><img
+                    src="/icon/arrow-left-solid-full.svg" alt="Previous"></button>
+                <span id="clip-counter" class="twitch-clip-nav__counter">1 / 5</span>
+                <button id="clip-next" class="twitch-clip-nav__btn" aria-label="Next clip"><img
+                    src="/icon/arrow-right-solid-full.svg" alt="Next"></button>
               </div>
             </div>
           </div>
@@ -183,7 +193,7 @@
       </div>
 
       <!-- VOD Embed — full width, below schedule & clips -->
-      <div class="container mt-5">
+      <div class="container section-block--lg">
         <div class="twitch-vod-wrapper">
           <p class="twitch-vod-label twitch-section__title" id="vod-label">Latest VOD</p>
           <div class="twitch-vod-frame" id="stream-container">
@@ -193,25 +203,12 @@
       </div>
     </section>
 
-    <!-- YouTube Section — hidden for now, planned for later
-    <section id="youtube" class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center mb-4">YouTube</h2>
-            <div id="youtube-content"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    -->
-
     <!-- Socials Section -->
     <section id="socials">
-      <div class="container border-top pt-4 mt-5">
-        <h2>Socials</h2>
+      <div class="container section-title-bar">
+        <h1 class="section-heading">Socials</h1>
       </div>
-      <div class="container mt-4">
+      <div class="container section-block">
         <div class="socials-card">
           <div class="shooting-stars-bg" aria-hidden="true">
             <div class="shooting-star"></div>
@@ -300,10 +297,6 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 
