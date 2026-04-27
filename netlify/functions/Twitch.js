@@ -1,5 +1,5 @@
 // This runs on Netlify's servers, NOT in the browser
-import fetch from 'node-fetch';
+// fetch is available natively in Node 18+
 
 // Store token in memory (resets every ~15 min when function cold starts)
 let cachedToken = null;
