@@ -1,0 +1,48 @@
+body {
+  background: linear-gradient(160deg, #0D0B2B 0%, #1E1954 35%, #4A1040 60%, #8B2252 80%, #C4547A 100%);
+
+  &::before, &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    background-image:
+      radial-gradient(1px 1px at 8%  12%, #FEF2CA, transparent),
+      radial-gradient(1.5px 1.5px at 22%  5%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 38% 18%, #FEF2CA, transparent),
+      radial-gradient(2px 2px at 55%  8%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 72% 14%, #FEF2CA, transparent),
+      radial-gradient(1.5px 1.5px at 88%  6%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 15% 30%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 48% 25%, #FEF2CA, transparent),
+      radial-gradient(2px 2px at 65% 35%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 82% 28%, #FEF2CA, transparent);
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+
+  &::after {
+    background-image:
+      radial-gradient(1.5px 1.5px at  5% 55%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 30% 48%, #FEF2CA, transparent),
+      radial-gradient(2px 2px at 58% 62%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 78% 55%, #FEF2CA, transparent),
+      radial-gradient(1.5px 1.5px at 92% 70%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 20% 78%, #FEF2CA, transparent),
+      radial-gradient(2px 2px at 45% 85%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 68% 90%, #FEF2CA, transparent),
+      radial-gradient(1.5px 1.5px at 85% 82%, #FEF2CA, transparent),
+      radial-gradient(1px 1px at 12% 92%, #FEF2CA, transparent);
+    animation: twinkle 4s ease-in-out infinite alternate;
+    animation-delay: 2s;
+  }
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.3; }
+  100% { opacity: 0.85; }
+}

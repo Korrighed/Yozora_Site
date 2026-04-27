@@ -6,10 +6,13 @@
 
 .navbar {
   background: linear-gradient(135deg, #13103a, #1E1954, #2a2470) !important;
-  border-bottom: 1px solid rgba(254, 242, 202, 0.3);
+  border: 1px solid rgba(254, 242, 202, 0.3);
+  border-radius: 0.75rem;
   box-shadow: 0 2px 20px rgba(14, 11, 48, 0.8);
   font-family: var(--font-family);
-  height: 3.5rem;
+  height: 4rem;
+  width: 65vw;
+  margin: 0.75rem auto 0;
 
   & .navbar-toggler {
     border-color: color-mix(in srgb, var(--decoration-color) 30%, transparent);

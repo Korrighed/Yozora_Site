@@ -4,12 +4,14 @@
 @import './components/text_block.css';
 @import './components/hero-mobile.css';
 @import './components/yozo_image.css';
+@import './components/background.css';
 @import './components/mobile_menu.css';
+@import './components/shooting_stars.css';
 @import './components/twitch_section.css';
 @import './mobile.css';
 
 :root {
-  --text-color: #F5F2F5;
+  --text-color: #FEF2CA;
   --decoration-color: #FEF2CA;
   --font-family: 'Playfair Display', serif;
   --text-size-small: 1rem;
@@ -48,23 +50,8 @@ body {
 
 body {
   color: var(--text-color);
-  background: linear-gradient(130deg, #1E1954, #4237BA);
   min-height: 100vh;
   position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/StarPatern.svg');
-    background-repeat: repeat;
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 0;
-  }
 }
 
 /* main.js adds .yozora-container to #presentation .container dynamically */
