@@ -79,9 +79,12 @@ export class MobileMenu {
       }
     })
 
-    // Fermer si redimensionnement vers desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 992 && this.#isOpen) this.close()
     })
+
+    window.addEventListener('scroll', () => {
+      if (this.#isOpen) this.close()
+    }, { passive: true })
   }
 }

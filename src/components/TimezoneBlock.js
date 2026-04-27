@@ -1,81 +1,64 @@
 export class TimezoneBlock {
-    constructor(streamTimezone = 'America/New_York') {
-        this.streamTimezone = streamTimezone; // 'America/New_York' (EST) or 'America/Los_Angeles' (PST)
+  constructor(streamTimezone = 'America/New_York') {
+    this.streamTimezone = streamTimezone
+  }
+
+  _getOffsetMinutes(date, timezone) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone,
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    }).formatToParts(date)
+    const get = t => parseInt(parts.find(p => p.type === t).value)
+    const asUTC = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour') % 24, get('minute'), get('second'))
+    return Math.round((asUTC - date.getTime()) / 60000)
+  }
+
+  _toLocalTime(streamHour, streamMinute = 0) {
+    const now = new Date()
+    const streamOffset = this._getOffsetMinutes(now, this.streamTimezone)
+    const localOffset = -now.getTimezoneOffset()
+    const localMinutes = streamHour * 60 + streamMinute - streamOffset + localOffset
+    const wrapped = ((localMinutes % 1440) + 1440) % 1440
+    const result = new Date(now)
+    result.setHours(Math.floor(wrapped / 60), wrapped % 60, 0, 0)
+    return result
+  }
+
+  _formatTime(date) {
+    let h = date.getHours()
+    const m = date.getMinutes()
+    const ampm = h >= 12 ? 'pm' : 'am'
+    h = h % 12 || 12
+    return `${h}${m > 0 ? `:${String(m).padStart(2, '0')}` : ''} ${ampm}`
+  }
+
+  _diffHours() {
+    const now = new Date()
+    const streamOffset = this._getOffsetMinutes(now, this.streamTimezone)
+    const localOffset = -now.getTimezoneOffset()
+    return Math.round((localOffset - streamOffset) / 60)
+  }
+
+  updateUsualStreamContent(selector, startHour, startMinute = 0) {
+    const el = document.querySelector(selector)
+    if (el) el.innerHTML = `Streams usually start at <strong>${this._formatTime(this._toLocalTime(startHour, startMinute))}</strong> for your timezone`
+  }
+
+  updateScheduleContent(selector) {
+    const el = document.querySelector(selector)
+    if (!el) return
+    const diff = this._diffHours()
+    if (diff === 0) {
+      el.innerHTML = 'This week schedule<br>Same time as you'
+    } else {
+      const dir = diff > 0 ? 'later' : 'earlier'
+      el.innerHTML = `This week schedule<br><strong>${Math.abs(diff)} hours</strong> ${dir} for you`
     }
+  }
 
-    calculateTimeDifference() {
-        const now = new Date();
-
-        // Get stream timezone offset
-        const streamTime = new Date(now.toLocaleString('en-US', { timeZone: this.streamTimezone }));
-        const localTime = new Date(now.toLocaleString('en-US', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }));
-
-        // Calculate difference in hours
-        const diffMs = localTime - streamTime;
-        const diffHours = Math.round(diffMs / (1000 * 60 * 60));
-
-        return diffHours;
-    }
-
-    generateScheduleMessage() {
-        const diff = this.calculateTimeDifference();
-
-        if (diff === 0) {
-            return "This week schedule<br>Same time as you";
-        } else if (diff > 0) {
-            return `This week schedule<br><strong>${Math.abs(diff)} hours</strong> later for you`;
-        } else {
-            return `This week schedule<br><strong>${Math.abs(diff)} hours</strong> earlier for you`;
-        }
-    }
-
-    convertStreamTimeToLocal(streamHour, streamMinute = 0) {
-        // Create a date in the stream timezone
-        const now = new Date();
-        const streamDate = new Date(now.toLocaleString('en-US', { timeZone: this.streamTimezone }));
-        streamDate.setHours(streamHour, streamMinute, 0, 0);
-
-        // Get the timestamp
-        const streamTimestamp = streamDate.getTime();
-        const diff = this.calculateTimeDifference();
-
-        // Add the difference
-        const localDate = new Date(streamTimestamp + (diff * 60 * 60 * 1000));
-
-        return localDate;
-    }
-
-    generateUsualStreamMessage(startHour, startMinute = 0) {
-        const localStart = this.convertStreamTimeToLocal(startHour, startMinute);
-
-        const formatTime = (date) => {
-            let hours = date.getHours();
-            const minutes = date.getMinutes();
-            const ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            const minutesStr = minutes > 0 ? `:${minutes.toString().padStart(2, '0')}` : '';
-            return `${hours}${minutesStr} ${ampm}`;
-        };
-
-        return `Streams usually start at <strong>${formatTime(localStart)}</strong> for your timezone`;
-    }
-
-    updateScheduleContent(selector) {
-        const element = document.querySelector(selector);
-        if (element) {
-            element.innerHTML = this.generateScheduleMessage();
-        }
-    }
-
-    updateUsualStreamContent(selector, startHour, startMinute = 0) {
-        const element = document.querySelector(selector);
-        if (element) {
-            element.innerHTML = this.generateUsualStreamMessage(startHour, startMinute);
-        }
-    }
-
-    static create(streamTimezone) {
-        return new TimezoneBlock(streamTimezone);
-    }
+  static create(streamTimezone) {
+    return new TimezoneBlock(streamTimezone)
+  }
 }
