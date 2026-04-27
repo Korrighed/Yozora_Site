@@ -163,7 +163,7 @@ class TwitchIntegration {
     if ('Notification' in window && Notification.permission === 'granted') {
       new Notification('Yozora is now live!', {
         body: 'Click to watch the stream',
-        icon: '/Yozo_Full.png'
+        icon: '/images/Yozo_Full.png'
       });
     }
   }

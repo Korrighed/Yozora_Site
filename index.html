@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/Chibi_Zo_Left.svg" />
+  <link rel="icon" type="image/svg+xml" href="/images/Chibi_Zo_Left.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yozora Fan site</title>
   <!-- Bootstrap 5 CSS -->
@@ -63,7 +63,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 g-0">
             <div class="yozora-full-image-container">
-              <img src="/Yozo_Full.png" alt="Yozora image">
+              <img src="/images/Yozo_Full.png" alt="Yozora image">
             </div>
           </div>
           <div class="col-lg-6 d-flex flex-column gap-4 text-center px-4 presentation-text-blocks">
@@ -79,7 +79,7 @@
       <!-- Presentation Mobile-->
       <div class="hero-mobile d-lg-none">
         <div class="hero-mobile__image-block">
-          <img src="/Yozo_Full.png" alt="Yozora" class="hero-mobile__image">
+          <img src="/images/Yozo_Full.png" alt="Yozora" class="hero-mobile__image">
         </div>
         <div class="hero-mobile__content">
           <p class="hero-mobile__title">WELCOME TO THE<br>YOZORA FAN SITE</p>
@@ -120,7 +120,7 @@
                 Streams are from x to x for your timezone
               </div>
               <div class="schedule_image mt-3">
-                <img src="/Shedul_9Nov.jpg" alt="Weekly Schedule">
+                <img src="/images/Shedul_9Nov.jpg" alt="Weekly Schedule">
               </div>
               <div class="text-blocks-container mt-3 text-center" id="schedule-timezone">
                 This week schedule — x hours difference for you
@@ -138,7 +138,7 @@
                     src="/icon/up-right-from-square-solid-full.svg" alt=""></a>
               </div>
               <div class="twitch-clip-embed-wrapper">
-                <p id="clip-title" class="twitch-clip-meta__title"></p>
+                <p id="clip-title" class="text-blocks-container"></p>
                 <div class="twitch-clip-frame" id="clips-container">
                   <!-- Clip embed injected by TwitchIntegration.js -->
                 </div>
@@ -181,17 +181,98 @@
     -->
 
     <!-- Socials Section -->
-    <section id="socials" class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center mb-4">Social Media</h2>
-            <div id="socials-content"></div>
+    <section id="socials">
+      <div class="container border-top pt-4 mt-5">
+        <h2>Socials</h2>
+      </div>
+      <div class="container mt-4">
+        <div class="socials-card">
+          <div class="shooting-stars-bg" aria-hidden="true">
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+          </div>
+          <div class="socials-chibi" aria-hidden="true">
+            <img src="/images/Chibi_Zo_Left.svg" alt="" class="socials-chibi__left">
+            <img src="/images/Chibi_Zo_Right.svg" alt="" class="socials-chibi__right">
+          </div>
+          <div class="socials-columns">
+            <ul class="socials-list">
+              <li class="socials-item">
+                <a class="socials-link" href="https://www.twitch.tv/yozora" target="_blank" rel="noopener noreferrer">
+                  <img src="/icon/twitch.svg" alt="" class="socials-icon">Twitch
+                </a>
+              </li>
+              <li class="socials-separator" aria-hidden="true"></li>
+              <li class="socials-item">
+                <a class="socials-link" href="https://twitter.com/YozoraCh" target="_blank" rel="noopener noreferrer">
+                  <img src="/icon/twitter.svg" alt="" class="socials-icon">Twitter
+                </a>
+              </li>
+              <li class="socials-separator" aria-hidden="true"></li>
+              <li class="socials-item">
+                <a class="socials-link" href="https://www.youtube.com/channel/UCTdtNTRxycFnzQtGfPOZYyw" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="/icon/youtube.svg" alt="" class="socials-icon">YouTube
+                </a>
+              </li>
+              <li class="socials-separator" aria-hidden="true"></li>
+              <li class="socials-item">
+                <a class="socials-link" href="https://www.youtube.com/channel/UCy1TaQM8Na3QgbjbBibAUHw" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="/icon/youtube.svg" alt="" class="socials-icon">VOD's channel
+                </a>
+              </li>
+              <li class="socials-separator socials-separator--mobile-only" aria-hidden="true"></li>
+            </ul>
+            <ul class="socials-list">
+              <li class="socials-item">
+                <a class="socials-link" href="https://discord.gg/WGBUTEQY6S" target="_blank" rel="noopener noreferrer">
+                  <img src="/icon/discord.svg" alt="" class="socials-icon">Discord
+                </a>
+              </li>
+              <li class="socials-separator" aria-hidden="true"></li>
+              <li class="socials-item">
+                <a class="socials-link" href="https://nyantastic.com/shop/yozora-aoi/" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="/icon/merch.svg" alt="" class="socials-icon">Merch
+                </a>
+              </li>
+              <li class="socials-separator" aria-hidden="true"></li>
+              <li class="socials-item">
+                <a class="socials-link" href="https://throne.me/u/yozoraaoi" target="_blank" rel="noopener noreferrer">
+                  <img src="/icon/throne.svg" alt="" class="socials-icon">Throne
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__content">
+        <p class="site-footer__disclaimer">
+          Fan site — no direct affiliation with Yozora Aoi.<br>
+          No cookies or user information are stored on this website.<br>
+          For any reclamation regarding art or content, contact me on Discord: <strong>korrighed</strong>
+        </p>
+        <div class="site-footer__right">
+          <a class="site-footer__github" href="https://github.com/Korrighed" target="_blank" rel="noopener noreferrer" aria-label="Korrighed on GitHub">
+            <img src="/icon/github.svg" alt="" class="site-footer__github-icon">
+            <span>Korrighed</span>
+          </a>
+          <span class="site-footer__year">2025 – 2026</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

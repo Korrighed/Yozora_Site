@@ -7,7 +7,9 @@
 @import './components/background.css';
 @import './components/mobile_menu.css';
 @import './components/shooting_stars.css';
+@import './components/socials.css';
 @import './components/twitch_section.css';
+@import './components/footer.css';
 @import './mobile.css';
 
 :root {

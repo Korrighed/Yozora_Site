@@ -8,29 +8,8 @@
   padding: var(--padding-medium);
   font-size: 1.2em;
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: var(--decoration-size);
-    height: var(--decoration-thickness);
-    background-color: var(--decoration-color);
-    transform: rotate(-45deg);
-    transition: all 0.3s ease;
-    box-shadow: 0.9375rem 2.1875rem 0 0 var(--decoration-color);
-  }
 
-  &::before {
-    top: 0;
-    right: 0;
-    transform-origin: left top;
-  }
 
-  &::after {
-    bottom: 0;
-    left: -1.3em;
-    transform-origin: right right;
-  }
 
   &__content {
     font-family: var(--font-family);
@@ -59,6 +38,7 @@
 }
 
 @media (min-width: 769px) {
+
   .text-block:hover::before,
   .text-block:hover::after {
     width: calc(var(--decoration-size) + 0.625rem);
@@ -71,9 +51,17 @@
     padding: 1.875rem 2.5rem;
   }
 
-  .text-block--small  { padding: 1.25rem 1.875rem; }
-  .text-block--medium { padding: 1.5625rem 2.1875rem; }
-  .text-block--large  { padding: 1.875rem 2.5rem; }
+  .text-block--small {
+    padding: 1.25rem 1.875rem;
+  }
+
+  .text-block--medium {
+    padding: 1.5625rem 2.1875rem;
+  }
+
+  .text-block--large {
+    padding: 1.875rem 2.5rem;
+  }
 
   .text-block::before {
     top: 0.5rem;
@@ -99,7 +87,7 @@
 }
 
 .text-with-bg-image {
-  background-image: url('/Yozo_Full.png');
+  background-image: url('/images/Yozo_Full.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
