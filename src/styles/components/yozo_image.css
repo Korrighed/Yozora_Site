@@ -1,0 +1,33 @@
+/* ── Image desktop ──────────────────────────────────────── */
+.col-lg-6.g-0:has(.yozora-full-image-container) {
+  max-height: 80vh;
+  overflow: visible;
+}
+
+.yozora-full-image-container {
+  width: 100%;
+  overflow: visible;
+  position: relative;
+
+  & img {
+    height: 170vh;
+    width: auto;
+    display: block;
+    position: relative;
+    bottom: 70px;
+    right: 160px;
+  }
+}
+
+/* ── Image mobile ───────────────────────────────────────── */
+.presentation-mobile-image-col {
+  overflow: visible;
+  position: relative;
+}
+
+.presentation-mobile-image {
+  height: 145vw;
+  display: block;
+  position: relative;
+  right: 137%;
+}

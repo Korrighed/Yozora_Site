@@ -2,7 +2,8 @@
 @import './navbar_overrides.css';
 @import './components/schedule_image.css';
 @import './components/text_block.css';
-@import './components/yozo_body_full.css';
+@import './components/hero-mobile.css';
+@import './components/yozo_image.css';
 @import './components/mobile_menu.css';
 @import './components/twitch_section.css';
 @import './mobile.css';
@@ -26,6 +27,16 @@
 
 * {
   box-sizing: border-box;
+}
+
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  --bs-gutter-x: 0.5rem;
 }
 
 html,
@@ -92,6 +103,6 @@ main {
 }
 
 #presentation {
-  padding-top: 3.5rem; /* clear fixed navbar */
+  padding-top: 0;
   overflow: hidden;
 }

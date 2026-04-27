@@ -4,8 +4,17 @@ export class MobileMenu {
   #toggle = null
 
   constructor(toggleSelector, links) {
-    this.#toggle = document.querySelector(toggleSelector)
-    this.links = links // [{ label, href }]
+    this.links = links
+  }
+
+  #createToggle() {
+    const btn = document.createElement('button')
+    btn.className = 'mobile-burger-btn'
+    btn.setAttribute('aria-label', 'Toggle navigation')
+    btn.setAttribute('aria-expanded', 'false')
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="#FEF2CA" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/></svg>`
+    document.body.appendChild(btn)
+    this.#toggle = btn
   }
 
   #createPanel() {
@@ -56,6 +65,7 @@ export class MobileMenu {
   }
 
   init() {
+    this.#createToggle()
     this.#createPanel()
 
     this.#toggle.addEventListener('click', () => {

@@ -5,7 +5,7 @@ import { TwitchIntegration } from './components/TwitchIntegration.js'
 import { MobileMenu } from './components/MobileMenu.js'
 
 // --------------- Mobile menu
-const mobileMenu = new MobileMenu('.navbar-toggler', [
+const mobileMenu = new MobileMenu(null, [
   { label: 'Presentation', href: '#presentation' },
   { label: 'Twitch', href: '#twitch' },
   // { label: 'YouTube', href: '#youtube' },

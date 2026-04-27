@@ -7,8 +7,22 @@
      --bp-mobile : 768px
    ============================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .yozora-title {
     font-size: 2rem;
+  }
+
+  #presentation {
+    padding-top: 0;
+  }
+
+  .text-blocks-container {
+    font-size: 1.1rem;
+    padding: 0.6rem;
+  }
+
+  .presentation-mobile-title {
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
   }
 }

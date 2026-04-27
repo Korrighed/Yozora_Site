@@ -1,7 +1,14 @@
+@media (max-width: 991px) {
+  .navbar {
+    display: none !important;
+  }
+}
+
 .navbar {
-  background-color: #644344 !important;
+  background: linear-gradient(135deg, #13103a, #1E1954, #2a2470) !important;
+  border-bottom: 1px solid rgba(254, 242, 202, 0.3);
+  box-shadow: 0 2px 20px rgba(14, 11, 48, 0.8);
   font-family: var(--font-family);
-  box-shadow: 0 2px 10px #8f207e98;
   height: 3.5rem;
 
   & .navbar-toggler {

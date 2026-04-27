@@ -1,0 +1,22 @@
+/* ── Hero text blocks ───────────────────────────────────── */
+.presentation-text-col {
+  background: rgba(30, 25, 84, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(254, 242, 202, 0.45);
+  box-shadow: 0 0 8px rgba(254, 242, 202, 0.15), inset 0 0 12px rgba(30, 25, 84, 0.4);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  min-height: 5rem;
+  text-align: center;
+
+  /* Annule les décorations de .text-block si la classe est présente */
+  &::before,
+  &::after {
+    content: none;
+  }
+}
+
+.presentation-text-blocks {
+  margin-top: -4rem; /* tweak vertical position */
+}
