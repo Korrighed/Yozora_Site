@@ -156,3 +156,18 @@
     background-position: center;
   }
 }
+
+@media (max-width: 768px) {
+  .socials-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .socials-chibi {
+    display: none;
+  }
+
+  .socials-columns {
+    flex-direction: column;
+  }
+}

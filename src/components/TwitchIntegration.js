@@ -69,7 +69,9 @@ class TwitchIntegration {
   }
 
   embed(param) {
-    this.streamContainer.innerHTML = `<iframe src="https://player.twitch.tv/?${param}&parent=${window.location.hostname}&muted=false" height="100%" width="100%" allowfullscreen></iframe>`;
+    const width = this.streamContainer.offsetWidth;
+    const height = Math.round(width * (9 / 16));
+    this.streamContainer.innerHTML = `<iframe src="https://player.twitch.tv/?${param}&parent=${window.location.hostname}&muted=false" height="${height}" width="${width}" allowfullscreen></iframe>`;
   }
 
   renderClip(index) {
@@ -78,7 +80,9 @@ class TwitchIntegration {
       return;
     }
     const clip = this.clips[index];
-    this.clipsContainer.innerHTML = `<iframe src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}" height="100%" width="100%" allowfullscreen></iframe>`;
+    const width = this.clipsContainer.offsetWidth;
+    const height = Math.round(width * (3 / 4));
+    this.clipsContainer.innerHTML = `<iframe src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}" height="${height}" width="${width}" allowfullscreen></iframe>`;
     const titleEl = document.getElementById('clip-title');
     const counterEl = document.getElementById('clip-counter');
     if (titleEl) titleEl.textContent = clip.title;
