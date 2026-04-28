@@ -102,3 +102,12 @@
   border-radius: 0.5rem;
   padding: 0.5rem 0.875rem;
 }
+
+@media (max-width: 768px) {
+  .hero-mobile__image {
+    position: relative;
+    width: 362%;
+    right: 136%;
+    bottom: 4%;
+  }
+}
