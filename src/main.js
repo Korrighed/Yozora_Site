@@ -1,8 +1,11 @@
 import './styles/main.css'
-import { TimezoneBlock } from './components/TimezoneBlock.js'
-import { ImageAnimation } from './components/Animation.js'
-import { TwitchIntegration } from './components/TwitchIntegration.js'
 import { MobileMenu } from './components/MobileMenu.js'
+import { NotificationManager } from './components/NotificationManager.js'
+import { TimezoneBlock } from './components/TimezoneBlock.js'
+import { TwitchIntegration } from './components/TwitchIntegration.js'
+
+// --------------- Notifications
+NotificationManager.init()
 
 // --------------- Mobile menu
 const mobileMenu = new MobileMenu(null, [

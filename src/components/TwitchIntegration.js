@@ -1,3 +1,5 @@
+import { NotificationManager } from './NotificationManager.js'
+
 class TwitchIntegration {
   constructor(streamContainerId, clipsContainerId) {
     this.banner = document.getElementById('twitch-banner');
@@ -96,9 +98,7 @@ class TwitchIntegration {
       this.updateBanner(data);
       if (data.isLive && !wasLive) {
         this.updateStream(data);
-        if ('Notification' in window && Notification.permission === 'granted') {
-          new Notification('Yozora is now live!', { body: 'Click to watch the stream', icon: '/images/Yozo_Full.webp' });
-        }
+        NotificationManager.send('Yozora is now live!', { body: 'Click to watch the stream', icon: '/icon/twitch.svg' });
       }
     } catch (e) {
       console.error('Live check failed:', e);
