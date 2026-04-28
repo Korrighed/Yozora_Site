@@ -29,11 +29,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 // --------------- Timezone management
-// Initialize timezone calculator
-const timezoneCalc = TimezoneBlock.create('America/New_York')
-
-timezoneCalc.updateUsualStreamContent('#ussual-timezone', 17)
-timezoneCalc.updateScheduleContent('#schedule-timezone')
+TimezoneBlock.init()
 
 
 

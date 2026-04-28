@@ -1,6 +1,7 @@
 export class TimezoneBlock {
-  constructor(streamTimezone = 'America/New_York') {
+  constructor(streamTimezone = 'America/Los_Angeles', streamHour = 17) {
     this.streamTimezone = streamTimezone
+    this.streamHour = streamHour
   }
 
   _getOffsetMinutes(date, timezone) {
@@ -41,9 +42,9 @@ export class TimezoneBlock {
     return Math.round((localOffset - streamOffset) / 60)
   }
 
-  updateUsualStreamContent(selector, startHour, startMinute = 0) {
+  updateUsualStreamContent(selector) {
     const el = document.querySelector(selector)
-    if (el) el.innerHTML = `Streams usually start at <strong>${this._formatTime(this._toLocalTime(startHour, startMinute))}</strong> for your timezone`
+    if (el) el.innerHTML = `Streams usually start at <strong>${this._formatTime(this._toLocalTime(this.streamHour))}</strong> for your timezone`
   }
 
   updateScheduleContent(selector) {
@@ -58,7 +59,13 @@ export class TimezoneBlock {
     }
   }
 
-  static create(streamTimezone) {
-    return new TimezoneBlock(streamTimezone)
+  static init() {
+    const tz = new TimezoneBlock()
+    tz.updateUsualStreamContent('#ussual-timezone')
+    tz.updateScheduleContent('#schedule-timezone')
+  }
+
+  static create(streamTimezone, streamHour) {
+    return new TimezoneBlock(streamTimezone, streamHour)
   }
 }
