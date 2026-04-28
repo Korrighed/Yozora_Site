@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import './navbar_overrides.css';
+@import './navbar.css';
 @import './components/schedule_image.css';
 @import './components/text_block.css';
 @import './components/hero-mobile.css';
@@ -31,6 +31,17 @@
 
 * {
   box-sizing: border-box;
+}
+
+.icon-external-link {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: currentColor;
+  mask-image: url('/icon/up-right-from-square-solid-full.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
 }
 
 .container {

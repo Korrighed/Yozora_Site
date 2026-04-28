@@ -1,5 +1,10 @@
 class TwitchIntegration {
   constructor(streamContainerId, clipsContainerId) {
+    this.banner = document.getElementById('twitch-banner');
+    this.status = document.getElementById('twitch-status');
+    this.detail = document.getElementById('twitch-detail');
+    this.cta = document.getElementById('twitch-cta');
+    this.ctaLabel = document.getElementById('twitch-cta-label');
     this.streamContainer = document.getElementById(streamContainerId);
     this.clipsContainer = document.getElementById(clipsContainerId);
     this.clips = [];
@@ -9,162 +14,94 @@ class TwitchIntegration {
   async init() {
     try {
       const data = await this.fetchTwitchData();
-
       this.updateBanner(data);
-
-      if (data.isLive) {
-        this.setVodLabel('🔴 Live Stream');
-        this.embedLiveStream(data.broadcaster.login);
-      } else if (data.videos.length > 0) {
-        this.setVodLabel('Latest VOD');
-        this.embedVOD(data.videos[0].id);
-      } else {
-        this.setVodLabel('');
-        this.showOfflineMessage();
-      }
-
+      this.updateStream(data);
       this.clips = data.clips || [];
       this.renderClip(0);
-
+      this.cta?.addEventListener('click', () => {
+        if (this.cta.dataset.href) window.open(this.cta.dataset.href, '_blank', 'noopener,noreferrer');
+      });
       document.getElementById('clip-prev')?.addEventListener('click', () => this.cycleClip(-1));
       document.getElementById('clip-next')?.addEventListener('click', () => this.cycleClip(1));
-
       setInterval(() => this.checkLiveStatus(), 120000);
-
-    } catch (error) {
-      console.error('Failed to initialize Twitch:', error);
-      this.showError();
+    } catch (e) {
+      console.error('Twitch init failed:', e);
+      this.streamContainer.innerHTML = '<div class="twitch-offline-msg"><p>Unable to load stream data. Please try again later.</p></div>';
     }
   }
 
   async fetchTwitchData() {
-    const response = await fetch('/.netlify/functions/Twitch');
-    if (!response.ok) throw new Error('Failed to fetch Twitch data');
-    return response.json();
+    const res = await fetch('/.netlify/functions/Twitch');
+    if (!res.ok) throw new Error('Fetch failed');
+    return res.json();
   }
 
   updateBanner(data) {
-    const banner = document.getElementById('twitch-status-banner');
-    const label = document.getElementById('twitch-banner-label');
-    const detail = document.getElementById('twitch-banner-detail');
-    const bannerLink = document.getElementById('twitch-banner-link');
-
     if (data.isLive) {
-      banner?.classList.add('twitch-banner--live');
-      banner?.classList.remove('twitch-banner--offline');
-      label.textContent = 'Currently Live';
-      detail.textContent = `${data.stream.title} · ${data.stream.viewer_count.toLocaleString()} viewers`;
-      bannerLink.dataset.label = 'Watch on Twitch';
+      this.banner.className = 'twitch-banner twitch-banner--live';
+      this.status.textContent = 'Currently Live';
+      this.detail.textContent = `${data.stream.title} · ${data.stream.viewer_count.toLocaleString()} viewers`;
+      this.ctaLabel.textContent = 'Watch on Twitch';
+      this.cta.dataset.href = 'https://www.twitch.tv/yozora';
     } else {
-      banner?.classList.add('twitch-banner--offline');
-      banner?.classList.remove('twitch-banner--live');
-      label.textContent = 'Offline';
-      detail.textContent = data.videos.length > 0
-        ? `Last stream: ${data.videos[0].title}`
-        : 'No recent streams';
-      bannerLink.dataset.label = 'Watch the last VOD';
+      this.banner.className = 'twitch-banner twitch-banner--offline';
+      this.status.textContent = 'Offline';
+      this.detail.textContent = data.videos[0] ? `Last stream: ${data.videos[0].title}` : 'No recent streams';
+      this.ctaLabel.textContent = 'Watch the last VOD';
+      this.cta.dataset.href = data.videos[0]?.url ?? 'https://www.twitch.tv/yozora';
     }
   }
 
-  setVodLabel(text) {
-    const el = document.getElementById('vod-label');
-    if (el) el.textContent = text;
+  updateStream(data) {
+    const vodLabel = document.getElementById('vod-label');
+    if (data.isLive) {
+      if (vodLabel) vodLabel.textContent = '🔴 Live Stream';
+      this.embed(`channel=${data.broadcaster.login}`);
+    } else if (data.videos.length > 0) {
+      if (vodLabel) vodLabel.textContent = 'Latest VOD';
+      this.embed(`video=${data.videos[0].id}`);
+    } else {
+      if (vodLabel) vodLabel.textContent = '';
+      this.streamContainer.innerHTML = '<div class="twitch-offline-msg"><p>No recent VOD available.</p></div>';
+    }
   }
 
-  embedLiveStream(channel) {
-    this.streamContainer.innerHTML = `
-      <iframe
-        src="https://player.twitch.tv/?channel=${channel}&parent=${window.location.hostname}&muted=false"
-        height="100%"
-        width="100%"
-        allowfullscreen>
-      </iframe>
-    `;
-  }
-
-  embedVOD(videoId) {
-    this.streamContainer.innerHTML = `
-      <iframe
-        src="https://player.twitch.tv/?video=${videoId}&parent=${window.location.hostname}&muted=false"
-        height="100%"
-        width="100%"
-        allowfullscreen>
-      </iframe>
-    `;
+  embed(param) {
+    this.streamContainer.innerHTML = `<iframe src="https://player.twitch.tv/?${param}&parent=${window.location.hostname}&muted=false" height="100%" width="100%" allowfullscreen></iframe>`;
   }
 
   renderClip(index) {
-    if (this.clips.length === 0) {
+    if (!this.clips.length) {
       this.clipsContainer.innerHTML = '<p class="text-center p-4">No recent clips available</p>';
       return;
     }
-
     const clip = this.clips[index];
-    this.clipsContainer.innerHTML = `
-      <iframe
-        src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}"
-        height="100%"
-        width="100%"
-        allowfullscreen>
-      </iframe>
-    `;
-
+    this.clipsContainer.innerHTML = `<iframe src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}" height="100%" width="100%" allowfullscreen></iframe>`;
     const titleEl = document.getElementById('clip-title');
     const counterEl = document.getElementById('clip-counter');
-
     if (titleEl) titleEl.textContent = clip.title;
     if (counterEl) counterEl.textContent = `${index + 1} / ${this.clips.length}`;
-
-    // view count hidden for now — can be toggled back on
-    // const viewsEl = document.getElementById('clip-views');
-    // if (viewsEl) viewsEl.textContent = `${clip.view_count.toLocaleString()} views`;
   }
 
   cycleClip(direction) {
-    if (this.clips.length === 0) return;
+    if (!this.clips.length) return;
     this.currentClipIndex = (this.currentClipIndex + direction + this.clips.length) % this.clips.length;
     this.renderClip(this.currentClipIndex);
-  }
-
-  showOfflineMessage() {
-    this.streamContainer.innerHTML = `
-      <div class="twitch-offline-msg">
-        <p>No recent VOD available.</p>
-      </div>
-    `;
-  }
-
-  showError() {
-    this.streamContainer.innerHTML = `
-      <div class="twitch-offline-msg">
-        <p>Unable to load stream data. Please try again later.</p>
-      </div>
-    `;
   }
 
   async checkLiveStatus() {
     try {
       const data = await this.fetchTwitchData();
-      const wasLive = document.getElementById('twitch-status-banner')?.classList.contains('twitch-banner--live') ?? false;
-
+      const wasLive = this.banner.classList.contains('twitch-banner--live');
       this.updateBanner(data);
-
       if (data.isLive && !wasLive) {
-        this.setVodLabel('🔴 Live Stream');
-        this.embedLiveStream(data.broadcaster.login);
-        this.showLiveNotification();
+        this.updateStream(data);
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('Yozora is now live!', { body: 'Click to watch the stream', icon: '/images/Yozo_Full.webp' });
+        }
       }
-    } catch (error) {
-      console.error('Live check failed:', error);
-    }
-  }
-
-  showLiveNotification() {
-    if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('Yozora is now live!', {
-        body: 'Click to watch the stream',
-        icon: '/images/Yozo_Full.png'
-      });
+    } catch (e) {
+      console.error('Live check failed:', e);
     }
   }
 }
