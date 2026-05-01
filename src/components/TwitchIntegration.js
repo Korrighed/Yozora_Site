@@ -11,11 +11,15 @@ class TwitchIntegration {
     this.clipsContainer = document.getElementById(clipsContainerId);
     this.clips = [];
     this.currentClipIndex = 0;
+    this.lastLiveStatus = null;
+    this.lastVODId = null;
   }
 
   async init() {
     try {
       const data = await this.fetchTwitchData();
+      this.lastLiveStatus = data.isLive;
+      this.lastVODId = data.videos[0]?.id || null;
       this.updateBanner(data);
       this.updateStream(data);
       this.clips = data.clips || [];
@@ -42,7 +46,10 @@ class TwitchIntegration {
     if (data.isLive) {
       this.banner.className = 'twitch-banner twitch-banner--live';
       this.status.textContent = 'Currently Live';
-      this.detail.textContent = `${data.stream.title} · ${data.stream.viewer_count.toLocaleString()} viewers`;
+      const detailText = data.stream.game_name
+        ? `${data.stream.title} · ${data.stream.game_name}`
+        : data.stream.title;
+      this.detail.textContent = detailText;
       this.ctaLabel.textContent = 'Watch on Twitch';
       this.cta.dataset.href = 'https://www.twitch.tv/yozora';
     } else {
@@ -95,15 +102,33 @@ class TwitchIntegration {
     this.renderClip(this.currentClipIndex);
   }
 
+  refreshPage() {
+    window.location.reload();
+  }
+
   async checkLiveStatus() {
     try {
       const data = await this.fetchTwitchData();
-      const wasLive = this.banner.classList.contains('twitch-banner--live');
+      const wasLive = this.lastLiveStatus !== null ? this.lastLiveStatus : this.banner.classList.contains('twitch-banner--live');
+      const isNowLive = data.isLive;
+      const statusChanged = wasLive !== isNowLive;
+      const vodChanged = data.videos[0]?.id !== this.lastVODId;
+
       this.updateBanner(data);
-      if (data.isLive && !wasLive) {
-        this.updateStream(data);
-        NotificationManager.send('Yozora is now live!', { body: 'Click to watch the stream', icon: '/icon/twitch.svg' });
+
+      if (statusChanged) {
+        if (isNowLive) {
+          NotificationManager.send('Yozora is now live!', { body: 'Click to watch the stream', icon: '/icon/twitch.svg' });
+          this.refreshPage();
+        } else {
+          this.refreshPage();
+        }
+      } else if (vodChanged && !isNowLive) {
+        this.refreshPage();
       }
+
+      this.lastLiveStatus = isNowLive;
+      this.lastVODId = data.videos[0]?.id || null;
     } catch (e) {
       console.error('Live check failed:', e);
     }
