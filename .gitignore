@@ -4,9 +4,9 @@ dist/
 # Environment variables
 .env
 .env.local
+.env.gh-pages
 
 # Npm
-package-lock.json
 node_modules/
 
 # Netlify

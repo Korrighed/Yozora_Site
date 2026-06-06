@@ -102,10 +102,6 @@ class TwitchIntegration {
     this.renderClip(this.currentClipIndex);
   }
 
-  refreshPage() {
-    window.location.reload();
-  }
-
   async checkLiveStatus() {
     try {
       const data = await this.fetchTwitchData();
@@ -116,15 +112,14 @@ class TwitchIntegration {
 
       this.updateBanner(data);
 
-      if (statusChanged) {
-        if (isNowLive) {
+      if (statusChanged || vodChanged) {
+        this.updateStream(data);
+        this.clips = data.clips || [];
+        this.renderClip(0);
+
+        if (statusChanged && isNowLive) {
           NotificationManager.send('Yozora is now live!', { body: 'Click to watch the stream', icon: '/icon/twitch.svg' });
-          this.refreshPage();
-        } else {
-          this.refreshPage();
         }
-      } else if (vodChanged && !isNowLive) {
-        this.refreshPage();
       }
 
       this.lastLiveStatus = isNowLive;

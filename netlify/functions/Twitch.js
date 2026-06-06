@@ -39,7 +39,7 @@ async function getAccessToken() {
 export const handler = async (event, context) => {
     // Enable CORS
     const headers = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://yozovtfan.netlify.app',
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json'
     };
@@ -91,8 +91,8 @@ export const handler = async (event, context) => {
                 }
             }),
 
-            // Get recent clips — fetch max allowed, sort by date
-            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=100`, {
+            // Get recent clips — fetch 20, sort by date
+            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=20`, {
                 headers: {
                     'Client-ID': clientId,
                     'Authorization': `Bearer ${token}`
@@ -132,8 +132,7 @@ export const handler = async (event, context) => {
             statusCode: 500,
             headers,
             body: JSON.stringify({
-                error: 'Failed to fetch Twitch data',
-                message: error.message
+                error: 'Service temporarily unavailable'
             })
         };
     }

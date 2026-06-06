@@ -26,6 +26,9 @@ export class ImageAnimation {
     }
 
     start() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
         this.intervalId = setInterval(() => {
             this.switchImage();
         }, this.interval);
