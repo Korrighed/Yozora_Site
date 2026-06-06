@@ -1,17 +1,15 @@
 /* ── Image desktop ──────────────────────────────────────── */
 .yozora-full-image-container {
-  max-height: 80vh;
-  max-width: 25vw;
-  overflow: visible;
-  position: relative;
+  overflow: hidden;
+  align-self: stretch;
 
   & img {
-    height: 170vh;
+    height: 85rem;
     width: auto;
     display: block;
     position: relative;
-    bottom: 70px;
-    right: 160px;
+    top: 0.5rem;
+    right: 0rem;
   }
 }
 

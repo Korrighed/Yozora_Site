@@ -30,7 +30,8 @@
   box-shadow: 0 2px 20px rgba(14, 11, 48, 0.8);
   font-family: var(--font-family);
   height: 4rem;
-  width: 65vw;
+  width: 100%;
+  max-width: 75rem;
   margin: 0.75rem auto 0;
 
   & .navbar-toggler {
