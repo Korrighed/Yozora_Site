@@ -257,6 +257,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   background: #0e0e10;
+  margin-block: 1rem;
 
   & iframe {
     display: block;
@@ -282,6 +283,10 @@
   min-height: 1.5rem;
   width: 100%;
   margin-top: 0.5rem;
+}
+
+#clip-title {
+  margin: 0 0 1.05rem;
 }
 
 .twitch-clip-meta__title {
