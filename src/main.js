@@ -3,6 +3,7 @@ import { MobileMenu } from './components/MobileMenu.js'
 import { NotificationManager } from './components/NotificationManager.js'
 import { TimezoneBlock } from './components/TimezoneBlock.js'
 import { TwitchIntegration } from './components/TwitchIntegration.js'
+import { YozoBits } from './components/YozoBits.js'
 
 // --------------- Notifications
 NotificationManager.init()
@@ -37,6 +38,9 @@ TimezoneBlock.init()
 
 
 
+
+// --------------- Yozo Bits audio player
+new YozoBits('yozo-bits-container').init()
 
 // Initialize Twitch integration
 const twitch = new TwitchIntegration('stream-container', 'clips-container');

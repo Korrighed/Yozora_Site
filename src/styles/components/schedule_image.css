@@ -1,3 +1,7 @@
+.schedule_image[hidden] {
+  display: none;
+}
+
 .schedule_image {
   margin-top: 1rem;
   display: flex;

@@ -2,6 +2,12 @@
    TWITCH SECTION
    ============================================ */
 
+/* --- Schedule info --- */
+#ussual-timezone {
+  margin-bottom: 0.6rem;
+  /* tweaker */
+}
+
 /* --- Status Banner --- */
 .twitch-banner {
   display: flex;
@@ -127,6 +133,16 @@
 }
 
 /* --- Shared block title --- */
+.twitch-section__subtitle {
+  font-family: var(--font-family);
+  font-size: 1.3rem;
+  padding: 0rem;
+  color: var(--text-color);
+  font-style: italic;
+  opacity: 0.7;
+  margin: 0 1.75rem 0px;
+}
+
 .twitch-section__title {
   font-family: var(--font-family);
   font-size: 1.5rem;

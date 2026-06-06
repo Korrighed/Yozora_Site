@@ -1,5 +1,5 @@
 export class TimezoneBlock {
-  constructor(streamTimezone = 'America/Los_Angeles', streamHour = 17) {
+  constructor(streamTimezone = 'America/Los_Angeles', streamHour = 18) {
     this.streamTimezone = streamTimezone
     this.streamHour = streamHour
   }
