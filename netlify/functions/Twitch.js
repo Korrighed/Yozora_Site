@@ -37,9 +37,12 @@ async function getAccessToken() {
 
 // Main handler
 export const handler = async (event, context) => {
-    // Enable CORS
+    // Enable CORS — allowlist prod + local dev
+    const allowedOrigins = ['https://yozovtfan.netlify.app', 'http://localhost:8888'];
+    const requestOrigin = event.headers?.origin || '';
+    const corsOrigin = allowedOrigins.includes(requestOrigin) ? requestOrigin : allowedOrigins[0];
     const headers = {
-        'Access-Control-Allow-Origin': 'https://yozovtfan.netlify.app',
+        'Access-Control-Allow-Origin': corsOrigin,
         'Access-Control-Allow-Headers': 'Content-Type',
         'Content-Type': 'application/json'
     };

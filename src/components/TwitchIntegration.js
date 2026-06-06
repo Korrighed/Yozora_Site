@@ -57,7 +57,8 @@ class TwitchIntegration {
       this.status.textContent = 'Offline';
       this.detail.textContent = data.videos[0] ? `Last stream: ${data.videos[0].title}` : 'No recent streams';
       this.ctaLabel.textContent = 'Watch the last VOD';
-      this.cta.dataset.href = data.videos[0]?.url ?? 'https://www.twitch.tv/yozora';
+      const videoUrl = data.videos[0]?.url;
+      this.cta.dataset.href = /^https:\/\//.test(videoUrl) ? videoUrl : 'https://www.twitch.tv/yozora';
     }
   }
 
@@ -76,9 +77,7 @@ class TwitchIntegration {
   }
 
   embed(param) {
-    const width = this.streamContainer.offsetWidth;
-    const height = Math.round(width * (9 / 16));
-    this.streamContainer.innerHTML = `<iframe src="https://player.twitch.tv/?${param}&parent=${window.location.hostname}&muted=false" height="${height}" width="${width}" allowfullscreen></iframe>`;
+    this.streamContainer.innerHTML = `<iframe src="https://player.twitch.tv/?${param}&parent=${window.location.hostname}&muted=false" width="100%" height="100%" allowfullscreen></iframe>`;
   }
 
   renderClip(index) {
@@ -87,9 +86,7 @@ class TwitchIntegration {
       return;
     }
     const clip = this.clips[index];
-    const width = this.clipsContainer.offsetWidth;
-    const height = Math.round(width * (3 / 4));
-    this.clipsContainer.innerHTML = `<iframe src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}" height="${height}" width="${width}" allowfullscreen></iframe>`;
+    this.clipsContainer.innerHTML = `<iframe src="https://clips.twitch.tv/embed?clip=${clip.id}&parent=${window.location.hostname}" width="100%" height="100%" allowfullscreen></iframe>`;
     const titleEl = document.getElementById('clip-title');
     const counterEl = document.getElementById('clip-counter');
     if (titleEl) titleEl.textContent = clip.title;
