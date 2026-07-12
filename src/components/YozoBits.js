@@ -107,9 +107,10 @@ export class YozoBits {
     const playBtn = document.createElement('button')
     playBtn.className = CLASS.playBtn
     playBtn.setAttribute('aria-label', `Play ${clip.label}`)
-    const playIcon = document.createElement('span')
+    const playIcon = document.createElement('img')
     playIcon.className = CLASS.playIcon
-    playIcon.textContent = '▶'
+    playIcon.src = '/icon/circle-play-solid-full.svg'
+    playIcon.alt = 'Play'
     playBtn.appendChild(playIcon)
 
     const body = document.createElement('div')
@@ -136,19 +137,19 @@ export class YozoBits {
     playBtn.addEventListener('click', () => {
       if (this.#active && this.#active !== audio) {
         this.#active.pause()
-        this.#container.querySelectorAll(`.${CLASS.playIcon}`).forEach(el => el.textContent = '▶')
+        this.#container.querySelectorAll(`.${CLASS.playIcon}`).forEach(el => el.classList.remove('playing'))
         this.#container.querySelectorAll(`.${CLASS.card}`).forEach(el => el.classList.remove(CLASS.cardPlaying))
       }
 
       if (audio.paused) {
         audio.play()
         this.#active = audio
-        playIcon.textContent = '⏸'
+        playIcon.classList.add('playing')
         card.classList.add(CLASS.cardPlaying)
       } else {
         audio.pause()
         this.#active = null
-        playIcon.textContent = '▶'
+        playIcon.classList.remove('playing')
         card.classList.remove(CLASS.cardPlaying)
       }
     })
@@ -160,7 +161,7 @@ export class YozoBits {
     })
 
     audio.addEventListener('ended', () => {
-      playIcon.textContent = '▶'
+      playIcon.classList.remove('playing')
       card.classList.remove(CLASS.cardPlaying)
       bar.style.width = '0%'
       time.textContent = '0:00'

@@ -157,26 +157,41 @@
 
           <!-- Schedule column -->
           <div class="twitch-info-card">
-            <p class="twitch-section__title">Schedule</p>
             <div class="text-blocks-container" id="ussual-timezone">
             </div>
-            <div class="schedule_image" hidden>
-              <img src="/images/Shedul_9Nov.jpg" alt="Weekly Schedule">
-            </div>
-            <div class="text-blocks-container" id="schedule-timezone" hidden>
-              This week schedule — x hours difference for you
+
+            <!-- Program section (shown first) -->
+            <div id="schedule-program-section">
+              <div class="schedule-header">
+                <button id="schedule-prev" class="twitch-clip-nav__btn" aria-label="Previous"><img src="/icon/arrow-left-solid-full.svg" alt="Previous"></button>
+                <p class="twitch-section__title">Schedule</p>
+                <button id="schedule-next" class="twitch-clip-nav__btn" aria-label="Next"><img src="/icon/arrow-right-solid-full.svg" alt="Next"></button>
+              </div>
+              <div class="schedule_image" id="schedule-program">
+                <img src="/images/schedul.jpg" alt="Weekly Schedule">
+              </div>
+              <div class="text-blocks-container" id="schedule-timezone" hidden>
+                This week schedule — x hours difference for you
+              </div>
             </div>
 
-            <p class="twitch-section__title">Yozo Bits</p>
-            <p class="twitch-section__subtitle">While you wait...</p>
-            <div id="yozo-bits-container"></div>
+            <!-- Yozo Bits section (hidden by default) -->
+            <div id="schedule-audio-section" hidden>
+              <div class="schedule-header">
+                <button id="schedule-prev-audio" class="twitch-clip-nav__btn" aria-label="Previous"><img src="/icon/arrow-left-solid-full.svg" alt="Previous"></button>
+                <p class="twitch-section__title">Yozo Bits</p>
+                <button id="schedule-next-audio" class="twitch-clip-nav__btn" aria-label="Next"><img src="/icon/arrow-right-solid-full.svg" alt="Next"></button>
+              </div>
+              <p class="twitch-section__subtitle">While you wait...</p>
+              <div id="yozo-bits-container"></div>
+            </div>
           </div>
 
           <!-- Clips carousel column -->
           <div class="twitch-info-card twitch-clips-card">
             <div class="twitch-clips-card__header">
               <p class="twitch-clips-card__title twitch-section__title">Recent Highlights</p>
-              <a class="twitch-clips-more" href="https://www.twitch.tv/yozora/videos?filter=clips&range=30d"
+              <a class="twitch-clips-more" href="/.netlify/functions/Twitch?filter=clips&range=30d"
                 target="_blank" rel="noopener noreferrer">More clips <span class="icon-external-link"
                   aria-hidden="true"></span></a>
             </div>

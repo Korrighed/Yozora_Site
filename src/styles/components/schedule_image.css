@@ -29,3 +29,12 @@
     max-width: 100%;
   }
 }
+
+/* Schedule navigation */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

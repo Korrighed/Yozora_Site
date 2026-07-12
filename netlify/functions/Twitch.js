@@ -94,8 +94,8 @@ export const handler = async (event, context) => {
                 }
             }),
 
-            // Get recent clips — fetch 20, sort by date
-            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=20`, {
+            // Get recent clips — fetch 10 from July 2026
+            fetch(`https://api.twitch.tv/helix/clips?broadcaster_id=${broadcasterId}&first=10&started_at=2026-07-01T00:00:00Z&ended_at=2026-07-12T23:59:59Z`, {
                 headers: {
                     'Client-ID': clientId,
                     'Authorization': `Bearer ${token}`
@@ -111,7 +111,7 @@ export const handler = async (event, context) => {
 
         const recentClips = (clipsData.data || [])
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-            .slice(0, 5);
+            .slice(0, 10);
 
         // Format response
         const response = {

@@ -46,3 +46,28 @@ new YozoBits('yozo-bits-container').init()
 const twitch = new TwitchIntegration('stream-container', 'clips-container');
 twitch.init();
 
+// Schedule toggle between program and audio
+let showingProgram = true;
+const scheduleProgramSection = document.getElementById('schedule-program-section');
+const scheduleAudioSection = document.getElementById('schedule-audio-section');
+const schedulePrevBtn = document.getElementById('schedule-prev');
+const scheduleNextBtn = document.getElementById('schedule-next');
+const schedulePrevAudioBtn = document.getElementById('schedule-prev-audio');
+const scheduleNextAudioBtn = document.getElementById('schedule-next-audio');
+
+function toggleScheduleView() {
+  showingProgram = !showingProgram;
+  if (showingProgram) {
+    scheduleProgramSection.hidden = false;
+    scheduleAudioSection.hidden = true;
+  } else {
+    scheduleProgramSection.hidden = true;
+    scheduleAudioSection.hidden = false;
+  }
+}
+
+schedulePrevBtn.addEventListener('click', toggleScheduleView);
+scheduleNextBtn.addEventListener('click', toggleScheduleView);
+schedulePrevAudioBtn.addEventListener('click', toggleScheduleView);
+scheduleNextAudioBtn.addEventListener('click', toggleScheduleView);
+
